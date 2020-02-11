@@ -72,43 +72,47 @@ A faire en dernier ...
 \markboth{\sc Remerciements}{}
 \addcontentsline{toc}{chapter}{Remerciements} 
 
-TODO
+Idem ...
 
 %% Table des matières
 \tableofcontents
-%% La liste des figure est optionnelle (si votre rapport manque de
-%% contenu ajouter ce type de pages sera perçu négativement)
-\listoffigures
-%% La liste des programmes est optionnelle (si votre rapport manque de
-%% contenu ajouter ce type de pages sera perçu négativement)
-\listofprograms
+
 \mainmatter
 \chapter*{Introduction}
 \markboth{\sc Introduction}{}
 \addcontentsline{toc}{chapter}{Introduction}
 
-\chapter{L'estampe chinoise}
+\section{Contexte}
+Dans le cadre de notre projet de fin d'étude, nous souhaitons utiliser des modèles d’apprentissage automatique (ex. Deep Learning) afin de produire un moteur de rendu capable d’adopter une stylisation « type » telle que la peinture chinoise. Dans un premier temps, il s’agira de proposer un modèle d’abstraction des peintures sélectionnées comme base d’apprentissage et d’utiliser le couple « peinture originale » / « abstraction » pour l’entraînement. Par la suite, un moteur de rendu d’abstractions sera connecté au réseau profond qui produira une peinture sur la base de l’abstraction.
+
+\section{Résultats et solutions apportées}
 
 
-\chapter{Etat de l'art}
-Chapeau
+%% ETAT DE L'ART
+\section{Etat de l'art}
+Chapeau ?
 
-
-\section{Exemple de travaux}
-
-Google DeepDream
-
-Google quickdraw
-https://quickdraw.withgoogle.com/
-
+\subsection{Google DeepDream}
 https://fr.wikipedia.org/wiki/DeepDream
 https://github.com/google/deepdream
 
+\subsection{Google quickdraw}
+https://quickdraw.withgoogle.com/
 
-\section{Technologies existantes}
+\subsection{Le transfert de style neuronal}
 
-Neural Style Transfer
-Gan
+Cette technique fut décrite par Leon A. Gatys dans son article "A Neural Algorithm of Artistic Style".~\cite{DBLP:journals/corr/GatysEB15a}
+
+Celle-ci utilise trois images, la première est l'image d'entrée (bruit), la seconde représente le style de référence (comme une peinture par exemple), la dernière correspond à l'image que l'on souhaite transformer.
+
+\includegraphics[width=0.7\linewidth]{images/neuronal-algorithm-artistic-style.png}
+
+Le principe consiste à définir deux fonctions de distance. La première décrit comment le contenu de deux images sont différentes, et la seconde réprésente la différence de style. On obtient alors deux images, une pour le style souhaité, une pour le contenu.
+
+L'objectif est de transformer l'image d'entrée en minimisant la distance avec l'image de contenu et avec l'image de style. On obtiens alors par rétropogation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
+
+Cela nécessite la création d'un réseau convolutionnel, en effet le modèle doit être en mesure de capturer les invariances et de définir les caractéristiques de l'images (chats vs chien) afin d'en obtenir une compréhension générale.
+
 
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
