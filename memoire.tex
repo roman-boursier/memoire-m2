@@ -1,0 +1,118 @@
+\documentclass[a4paper, 12pt]{book}
+\usepackage{graphicx}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{url}
+\usepackage[french]{algorithm}
+\usepackage{style/myalgorithm}
+\usepackage{amsmath,amsfonts,amssymb}
+\newcommand{\fBm}{\emph{fBm}~}
+\newcommand{\etal}{\emph{et al.}~}
+\newcommand{\glAd}{\emph{GL4D}~}
+\newcommand{\apiopengl}{API OpenGL\textsuperscript{\textregistered}~}
+\newcommand{\opengl}{OpenGL\textsuperscript{\textregistered}~}
+\newcommand{\opengles}{OpenGL\textsuperscript{\textregistered}ES~}
+\newcommand{\clang}{langage \texttt{C}}
+\newcommand{\codesource}{\textsc{Code source}~}
+\floatstyle{ruled}
+\newfloat{programslist}{htbp}{locs}
+\newcommand{\listofprograms}{\listof{programslist}{Liste des codes source}}
+\newcounter{program}[subsection]
+\renewcommand{\theprogram}{\arabic{chapter}.\arabic{program}}
+
+\newenvironment{program}[1]{
+  \if\relax\detokenize{#1}\relax
+  \gdef\mycaption{\relax}
+  \else
+  \gdef\mycaption{#1}
+  \fi
+  \refstepcounter{program}
+  \addcontentsline{locs}{section}{#1}
+  \footnotesize
+}{
+  \begin{description}
+    \item[\codesource \theprogram]--~\mycaption
+  \end{description}
+}
+
+\begin{document}
+\begin{titlepage}
+  \begin{center}
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \includegraphics[height=1.5cm]{images/m2ise.png}
+    \end{tabular*}
+    \small 
+    \rule{\textwidth}{.5pt}~\\
+    \large 
+    \textsc{Université Paris 8 - Vincennes à Saint-Denis}\vspace{0.5cm}\\
+    \textbf{Master Informatique des Systèmes Embarqués}\vspace{3.0cm}\\
+    \Large
+    \textbf{Memoire de projet tuteuré}\vspace{1.5cm}\\
+    \large
+    \textbf{Fakhri \textsc{YAHIAOUI} - Roman \textsc{BOURSIER}}\vspace{1.5cm}\\
+    Date de soutenance : le 09/06/2020\vspace{1.75cm}\\
+  \end{center}\vspace{1.5cm}~\\
+  \begin{tabular}{ll}
+    \hspace{-0.45cm}Tuteur -- Université~:~&~Farès \textsc{BELHADJ}\\
+  \end{tabular}
+\end{titlepage}
+\frontmatter
+\chapter*{Résumé}
+\markboth{\sc Résumé}{}
+\addcontentsline{toc}{chapter}{Résumé} 
+
+A faire en dernier ...
+
+
+\chapter*{Remerciements}
+\markboth{\sc Remerciements}{}
+\addcontentsline{toc}{chapter}{Remerciements} 
+
+TODO
+
+%% Table des matières
+\tableofcontents
+%% La liste des figure est optionnelle (si votre rapport manque de
+%% contenu ajouter ce type de pages sera perçu négativement)
+\listoffigures
+%% La liste des programmes est optionnelle (si votre rapport manque de
+%% contenu ajouter ce type de pages sera perçu négativement)
+\listofprograms
+\mainmatter
+\chapter*{Introduction}
+\markboth{\sc Introduction}{}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\chapter{L'estampe chinoise}
+
+
+\chapter{Etat de l'art}
+Chapeau
+
+
+\section{Exemple de travaux}
+
+Google DeepDream
+
+Google quickdraw
+https://quickdraw.withgoogle.com/
+
+https://fr.wikipedia.org/wiki/DeepDream
+https://github.com/google/deepdream
+
+
+\section{Technologies existantes}
+
+Neural Style Transfer
+Gan
+
+
+\chapter{Conclusion et Perspectives\label{chap-conclusion}}
+
+\bibliographystyle{alpha}
+\bibliography{memoire}
+\end{document}
