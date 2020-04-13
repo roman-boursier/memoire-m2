@@ -4,8 +4,12 @@
 \contentsline {chapter}{Introduction}{1}
 \contentsline {section}{\numberline {0.1}Contexte}{1}
 \contentsline {section}{\numberline {0.2}R\IeC {\'e}sultats et solutions apport\IeC {\'e}es}{1}
-\contentsline {section}{\numberline {0.3}Etat de l'art}{1}
-\contentsline {subsection}{\numberline {0.3.1}Google DeepDream}{1}
-\contentsline {subsection}{\numberline {0.3.2}Google quickdraw}{1}
-\contentsline {subsection}{\numberline {0.3.3}Le transfert de style neuronal}{1}
-\contentsline {chapter}{\numberline {1}Conclusion et Perspectives}{3}
+\contentsline {section}{\numberline {0.3}Technologies existante}{1}
+\contentsline {section}{\numberline {0.4}Etat de l'art}{1}
+\contentsline {subsection}{\numberline {0.4.1}Google DeepDream}{1}
+\contentsline {subsection}{\numberline {0.4.2}Google quickdraw}{1}
+\contentsline {subsection}{\numberline {0.4.3}Semantic Image Synthesis with SPADE (GauGAN)}{2}
+\contentsline {subsection}{\numberline {0.4.4}Le transfert de style neuronal}{2}
+\contentsline {subsection}{\numberline {0.4.5}Image analogies}{3}
+\contentsline {subsection}{\numberline {0.4.6}Scene Completion}{3}
+\contentsline {chapter}{\numberline {1}Conclusion et Perspectives}{5}

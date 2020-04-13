@@ -85,12 +85,19 @@ Idem ...
 \section{Contexte}
 Dans le cadre de notre projet de fin d'étude, nous souhaitons utiliser des modèles d’apprentissage automatique (ex. Deep Learning) afin de produire un moteur de rendu capable d’adopter une stylisation « type » telle que la peinture chinoise. Dans un premier temps, il s’agira de proposer un modèle d’abstraction des peintures sélectionnées comme base d’apprentissage et d’utiliser le couple « peinture originale » / « abstraction » pour l’entraînement. Par la suite, un moteur de rendu d’abstractions sera connecté au réseau profond qui produira une peinture sur la base de l’abstraction.
 
+Le modèle généré devra d'une part adopter la stylisation retenue mais aussi interpréter l'abstraction d'origine.
+
 \section{Résultats et solutions apportées}
+
+
+%% Technologies
+\section{Technologies existante}
+Todo -- Chapeau
 
 
 %% ETAT DE L'ART
 \section{Etat de l'art}
-Chapeau ?
+Todo -- Chapeau
 
 \subsection{Google DeepDream}
 https://fr.wikipedia.org/wiki/DeepDream
@@ -98,6 +105,12 @@ https://github.com/google/deepdream
 
 \subsection{Google quickdraw}
 https://quickdraw.withgoogle.com/
+
+\subsection{Semantic Image Synthesis with SPADE (GauGAN)}
+https://arxiv.org/pdf/1903.07291.pdf
+
+\subsection{Coco dataset}
+Versions of COCO-Stuff
 
 \subsection{Le transfert de style neuronal}
 
@@ -112,6 +125,35 @@ Le principe consiste à définir deux fonctions de distance. La première décri
 L'objectif est de transformer l'image d'entrée en minimisant la distance avec l'image de contenu et avec l'image de style. On obtiens alors par rétropogation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
 
 Cela nécessite la création d'un réseau convolutionnel, en effet le modèle doit être en mesure de capturer les invariances et de définir les caractéristiques de l'images (chats vs chien) afin d'en obtenir une compréhension générale.
+
+\subsection{Le transfert de style neuronal}
+https://www.groundai.com/project/stable-and-controllable-neural-texture-synthesis-and-style-transfer-using-histogram-losses/2
+https://www.groundai.com/project/automated-deep-photo-style-transfer/1
+
+\subsection{Texture transfert}
+
+\subsection{Segmentation non-supervise}
+\subsection{Semantique segmentation}
+http://datahacker.rs/top-10-github-papers-semantic-segmentation/
+https://www.arxiv-vanity.com/papers/1603.01768/
+
+ 
+ 
+\subsection{Engouement des gans}
+https://github.com/hindupuravinash/the-gan-zoo
+
+\subsection{image translation}
+
+\subsection{Image analogies}
+A. Hertzmann, C. E. Jacobs, N. Oliver, B. Curless, and D. H.
+Salesin. Image analogies. 2001.
+https://medium.com/syncedreview/visual-attribute-transfer-through-deep-image-analogy-6f0ffa5e9e09
+
+\subsection{Scene Completion}
+http://graphics.cs.cmu.edu/projects/scene-completion/
+
+\subsection{Image segmentation et conditionnal gan}
+https://www.arxiv-vanity.com/papers/1612.00215/
 
 
 
