@@ -87,32 +87,29 @@ Dans le cadre de notre projet de fin d'étude, nous souhaitons utiliser des mod�
 
 Le modèle généré devra d'une part adopter la stylisation retenue mais aussi interpréter l'abstraction d'origine.
 
-\section{Résultats et solutions apportées}
+
+\chapter{Etat de l'art}
+Nous présenterons dans ce chapitre les différents travaux en lien avec notre sujet. Nous traiterons des réseaux de neuronnes et plus particulièrement de l'architecture GAN. 
+
+Nous évoquerons, de manière plus succincte, des récherches liées à notre sujet mais n'utilisant pas l'intelligence artificiel afin de pouvoir identifier les avantages et inconvénients des deux mondes. 
 
 
-%% Technologies
-\section{Technologies existante}
-Todo -- Chapeau
+\section{Généralité sur les GANs}
+Les réseaux adverses génératifs (en anglais generative adversarial networks ou GANs) sont une classe d'algorithmes d'apprentissage non-supervisé. Ces algorithmes ont été introduits par Goodfellow et al. 2014. Ils permettent de générer des images avec un fort degré de réalisme[1].
+
+--- todo : plus de détails sur le fonctionnement des GANs
+
+Il existe aujourd'hui une très grande variété de travaux de recherches implémentants les Gans (DCGAN, CGAN, Bayesian GAN, GYCLE GAN ...). Nous n'avons pas pu tous les étudier mais nous avons cependant orienté nos recherches sur les travaux autour du concept assez large du "transfert d'image ou de stylisation".
 
 
-%% ETAT DE L'ART
-\section{Etat de l'art}
-Todo -- Chapeau
 
-\subsection{Google DeepDream}
-https://fr.wikipedia.org/wiki/DeepDream
-https://github.com/google/deepdream
 
-\subsection{Google quickdraw}
-https://quickdraw.withgoogle.com/
+\section{Pix2Pix}
 
-\subsection{Semantic Image Synthesis with SPADE (GauGAN)}
-https://arxiv.org/pdf/1903.07291.pdf
+\section{GauGan}
 
-\subsection{Coco dataset}
-Versions of COCO-Stuff
 
-\subsection{Le transfert de style neuronal}
+\section{Le transfert de style neuronal}
 
 Cette technique fut décrite par Leon A. Gatys dans son article "A Neural Algorithm of Artistic Style".~\cite{DBLP:journals/corr/GatysEB15a}
 
@@ -126,35 +123,61 @@ L'objectif est de transformer l'image d'entrée en minimisant la distance avec l
 
 Cela nécessite la création d'un réseau convolutionnel, en effet le modèle doit être en mesure de capturer les invariances et de définir les caractéristiques de l'images (chats vs chien) afin d'en obtenir une compréhension générale.
 
-\subsection{Le transfert de style neuronal}
-https://www.groundai.com/project/stable-and-controllable-neural-texture-synthesis-and-style-transfer-using-histogram-losses/2
-https://www.groundai.com/project/automated-deep-photo-style-transfer/1
 
-\subsection{Texture transfert}
+\section{Les datasets disponibles}
 
-\subsection{Segmentation non-supervise}
-\subsection{Semantique segmentation}
-http://datahacker.rs/top-10-github-papers-semantic-segmentation/
-https://www.arxiv-vanity.com/papers/1603.01768/
+\subsection{Google quickdraw}
+\subsection{Sketchy Database}
 
+
+
+\chapter{Tests et Problématiques}
+
+Comme nous l'avons vu les conditionnals Gan peuvent nous apporter une partie de de la solution. Nous avons décidé de tester plusieurs implémentations à notre dataset. 
+
+\section{Tests}
+
+\subsection{Application d'un filtre contour sur des peintures chinoise}
+
+\subsection{Association pix2pix et transfert de style}
+
+Le dataset est assez difficile à constituer car il existe une grande variétés de styles, techniques et courants ce qui le rend très étérogène. Pour palier à ce problème, une des expérience à été de combiner l'architecture pix2pix avec le transfert de style.
+
+Une fois le modèle entrainé, nous pouvons générer une photos de paysage à partir d'un croquis. 
+
+\includegraphics[width=0.7\linewidth]{images/pix2pix-t1.png}
+
+Il est alors possible d'appliquer un transfert de style, dont l'image de contenu est la photo générée et l'image de style une peinture chinoise.
+
+\includegraphics[width=0.7\linewidth]{images/pix2pix-t1-ts.jpg}
+
+Au final il serait peut-être plus judicieux de fabriquer directement un dataset croquis/peinture chinoise, dont les peintures auraient été générées en appliquant un transfert de style à des photos.
+
+
+\section{Problème des abstractions}
+
+Nous l'avons vu il est possible de générer un paysage à partir de quelques lignes. Cependant, nous sommes confronté à un problème avec ce type de répresentation en entrée : 
+
+\includegraphics[width=0.7\linewidth]{images/pix2pix-fail.png}
+
+En effet, le model n'as pas été confronté à ce type d'entrée, il n'est donc pas en mesure de faire le lien avec un arbre "réel". 
+
+Voici les solutions envisagées  :
  
- 
-\subsection{Engouement des gans}
-https://github.com/hindupuravinash/the-gan-zoo
+- Dessiner les croquis du dataset à la main. Théoriquement, cette solution pourrait fonctionner mais il existe deux inconvenients majeurs : c'est fastidieux, et puis il faut mobiliser le plus de participants différents afin d'avoir des abstractions variées. Enfin le dataset sera très proche de la problématique du "paysage chinois"
 
-\subsection{image translation}
+- Etre capable de générer une représentation abstraite à partir d'une photos ou d'une peinture. Nous pensons que le dataset quickdraw pourrait être un très bon point de départ.
 
-\subsection{Image analogies}
-A. Hertzmann, C. E. Jacobs, N. Oliver, B. Curless, and D. H.
-Salesin. Image analogies. 2001.
-https://medium.com/syncedreview/visual-attribute-transfer-through-deep-image-analogy-6f0ffa5e9e09
+Il existe cependant de gros problèmes, lié à l'orientation de l'objet (ref), et bien connu des hors champs.
 
-\subsection{Scene Completion}
-http://graphics.cs.cmu.edu/projects/scene-completion/
+- Enfin il y a également la piste des "sémantiques layouts", utilisées par GauGan. Nous ne pouvons pas considérer les sémantique layout comme des abstractions. Mais nous constatons qu'il est possible via ces dernier de résoudres efficacement le probleme.
 
-\subsection{Image segmentation et conditionnal gan}
-https://www.arxiv-vanity.com/papers/1612.00215/
+\includegraphics[width=0.5\linewidth]{images/gaugan-abs-ex.jpeg}
 
+Il faudrait donc trouver le moyen de passer du croquis au sémantique layout
+
+
+\chapter{Résultats et solutions apportées}
 
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
