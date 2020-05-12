@@ -1,6 +1,7 @@
 \documentclass[a4paper, 12pt]{book}
 \usepackage{graphicx}
 \usepackage[french]{babel}
+\usepackage{caption}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{multirow}
@@ -83,30 +84,93 @@ Idem ...
 \addcontentsline{toc}{chapter}{Introduction}
 
 \section{Contexte}
-Dans le cadre de notre projet de fin d'étude, nous souhaitons utiliser des modèles d’apprentissage automatique (ex. Deep Learning) afin de produire un moteur de rendu capable d’adopter une stylisation « type » telle que la peinture chinoise. Dans un premier temps, il s’agira de proposer un modèle d’abstraction des peintures sélectionnées comme base d’apprentissage et d’utiliser le couple « peinture originale » / « abstraction » pour l’entraînement. Par la suite, un moteur de rendu d’abstractions sera connecté au réseau profond qui produira une peinture sur la base de l’abstraction.
+Dans le cadre de notre projet de fin d'étude, nous souhaitons utiliser un modèle d’apprentissage automatique du type Deep Learning, afin de produire un moteur de rendu capable d’adopter une stylisation « type » telle que la peinture chinoise. Dans un premier temps, il s’agira de proposer un modèle d’abstraction des peintures sélectionnées comme base d’apprentissage et d’utiliser le couple « peinture originale » / « abstraction » pour l’entraînement. Par la suite, un moteur de rendu d’abstractions sera connecté au réseau profond qui produira une peinture sur la base de l’abstraction.
 
 Le modèle généré devra d'une part adopter la stylisation retenue mais aussi interpréter l'abstraction d'origine.
 
+\section{Problématique}
+
+De nombreux modèle comme pix2pix ou Gaugan permettent déjà de transférer un style d'une image à l'autre avec de bons résultats. La principale difficulté est de constituer un dataset de pairs abstraction/peintures sur lequel entraîner ces modeles. Ce dataset n'existe pas et l'enjeux est de notre point de vue, de trouver un moyen de le constituer.
+
+La figure n°1 montre qu'il est possible de générer un paysage à partir de quelques lignes. Cependant, nous sommes confronté à un problème avec la figure n°2.
+
+\begin{center}
+\includegraphics[scale=0.5]{images/pix2pix-t1.png}
+\captionof{figure}{Nous avons testé pix2pix sur un dataset composé de photos de paysages que nous avons labellisées en appliquant un filtre canny. Le résultat présenté montre le rendu une fois l'apprentissage terminé, avec un dessin fait à main levée en entrée}
+\label{fig1}
+\end{center}
+
+
+\begin{center}
+\includegraphics[scale=0.7]{images/pix2pix-fail.png}
+\captionof{figure}{Utilisation de pix2pix avec une abstraction d'arbre}
+\label{fig1}
+\end{center}
+
+
+En effet, le model n'as pas été confronté à ce type d'entrée lors de son apprentissage, il n'est donc pas en mesure de reconstituer un arbre.
+
+Nous avons demandé à un plusieurs personnes de dessiner schématiquement un paysage composé de montagnes et d'arbres éléments typiques d'une peinture chinoise: 
+\paragraph{}
+\includegraphics[width=0.25\linewidth]{images/croquis_1.jpg}
+\includegraphics[width=0.25\linewidth]{images/croquis_3.jpg}
+\includegraphics[width=0.25\linewidth]{images/croquis_4.jpg}
+\includegraphics[width=0.25\linewidth]{images/croquis_5.jpg}
+\paragraph{}
+
+Nous pouvons dire que ce type de dessins constitue des "abstractions", que nous souhaitons convertir en peinture chinoises. Nous pouvons déjà noter qu'il n'existe pas une seule façon de représenter un paysage mais plusieurs. Selon le dessinateur, les dessins possèdent des niveaux "d'informations" plus ou moins élévé, c'est à dire plus ou moins "abstraits". La figure n°1 nous indique des arbres, mais nous ne savons rien de la forme potentiel que ceux-ci pourrais avoir (bien que nous pouvons dire qu'il s'agit plutôt d'un sapin que d'un pin). Tandis que sur la figure n°2 nous avons déjà plus de détails.
+
+
 
 \chapter{Etat de l'art}
-Nous présenterons dans ce chapitre les différents travaux en lien avec notre sujet. Nous traiterons des réseaux de neuronnes et plus particulièrement de l'architecture GAN. 
+ 
+Nous présentons dans un premier temps l'architecture GANs, qui est au coeur de notre problématique. Nous présenterons également différents modèle existants sur lesquels nous avons testé nos données.
 
-Nous évoquerons, de manière plus succincte, des récherches liées à notre sujet mais n'utilisant pas l'intelligence artificiel afin de pouvoir identifier les avantages et inconvénients des deux mondes. 
+Enfin, nous évoquerons, de manière plus succincte, des recherches liées à notre sujet mais n'utilisant pas les réseaux de neurones afin de pouvoir identifier les avantages et inconvénients des deux mondes. 
 
 
 \section{Généralité sur les GANs}
-Les réseaux adverses génératifs (en anglais generative adversarial networks ou GANs) sont une classe d'algorithmes d'apprentissage non-supervisé. Ces algorithmes ont été introduits par Goodfellow et al. 2014. Ils permettent de générer des images avec un fort degré de réalisme[1].
 
---- todo : plus de détails sur le fonctionnement des GANs
-
-Il existe aujourd'hui une très grande variété de travaux de recherches implémentants les Gans (DCGAN, CGAN, Bayesian GAN, GYCLE GAN ...). Nous n'avons pas pu tous les étudier mais nous avons cependant orienté nos recherches sur les travaux autour du concept assez large du "transfert d'image ou de stylisation".
+\paragraph{}
+Les réseaux adverses génératifs sont une classe d'algorithmes d'apprentissage non-supervisé. Ces algorithmes ont été introduits dès 2014 par Goodfellow \cite{goodfellow2014generative} et permettent de générer des images avec un fort degré de réalisme. La structure des GANs se compose de deux parties, le générateur et le discriminateur. Le générateur génère des données et les soumets au discriminateur dont le but est d'évaluer le degré de crédibilité de la donnée. 
 
 
+$G(z, 01)$ se charge de "mapper" le bruit $z$ vers l'espace désiré
+$D(x, 02)$ retourne et la probabilité dans l'interval $[0,1]$ que $x$ vient du dataset original. Enfin $0i$ représente les poids définis par chacun des modèles.
+
+Les poids sont donc mis à jours pour : 
+
+1 - Maximiser la probabilité que les données $x$, soient classifiées comme appartenant au dataset d'origine. Soit maximiser la fonction de perte $D(x)$
+
+2 - Minimiser la probabilité que de fausse images appartiennent au dataset d'origine. Soit minimiser la fonction de perte $D(G(z))$
+
+
+Pour résumer c'est une sorte de jeu, dans lequel le générateur essai de maximiser la probabilité que sa sortie soit reconnu comme réel, tandis que le discriminateur essai de minimiser la même valeur.
+
+
+\begin{center}
+\includegraphics[scale=0.7]{images/tests_cgan.png}
+\captionof{figure}{Test de génération d'arbres utilisant l'architecture DCGAN}
+\label{fig1}
+\end{center}
+
+
+Il existe aujourd'hui une très grande variété de travaux de recherches implémentants les Gans (CGAN, Bayesian GAN, GYCLE GAN ...). Nous présentons ici des solutions existantes permettant de répondre partiellement à notre problématique.
 
 
 \section{Pix2Pix}
+Phillip Isola, Jun-Yan Zhu, Tinghui Zhou et Alexei A. Efros proposent en 2014 une nouvelle approche intitulée Image-to-Image Translation with Conditional Adversarial Networks.\cite{DBLP:journals/corr/GatysEB15a}
+Leur contribution principale fut de montrer en quoi les cGans peuvent permettre de résoudre efficacement les problèmes de translation d'image et ainsi de proposer un framework pouvant être appliqué à n'importe quel domaine.
+
+Les Gans conditionnels apprennent une cartographie à partir d’images observées $x$ et d’un vecteur de bruit aléatoire $z$, vers $y$:$G:{x,z} →y$. 
+
+L"architecture utilise "U-Net" pour le générateur et "PatchGAN" pour le discriminateur.
+
+
 
 \section{GauGan}
+
+\includegraphics[width=1\linewidth]{images/test-gaugan.png}
 
 
 \section{Le transfert de style neuronal}
@@ -115,69 +179,34 @@ Cette technique fut décrite par Leon A. Gatys dans son article "A Neural Algori
 
 Celle-ci utilise trois images, la première est l'image d'entrée (bruit), la seconde représente le style de référence (comme une peinture par exemple), la dernière correspond à l'image que l'on souhaite transformer.
 
-\includegraphics[width=0.7\linewidth]{images/neuronal-algorithm-artistic-style.png}
+Le principe consiste à définir deux fonctions de distance. La première décrit comment le contenu de deux images sont différentes, et la seconde représente la différence de style. On obtient alors deux images, une pour le style souhaité, une pour le contenu.
 
-Le principe consiste à définir deux fonctions de distance. La première décrit comment le contenu de deux images sont différentes, et la seconde réprésente la différence de style. On obtient alors deux images, une pour le style souhaité, une pour le contenu.
+L'objectif est de transformer l'image d'entrée en minimisant la distance avec l'image de contenu et avec l'image de style. On obtiens alors par rétropagation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
 
-L'objectif est de transformer l'image d'entrée en minimisant la distance avec l'image de contenu et avec l'image de style. On obtiens alors par rétropogation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
+\includegraphics[width=0.5\linewidth]{images/transfert-style_1.jpg}
+\includegraphics[width=0.5\linewidth]{images/transfert-style_2.jpg}
+\includegraphics[width=0.5\linewidth]{images/transfert-style_3.jpg}
 
 Cela nécessite la création d'un réseau convolutionnel, en effet le modèle doit être en mesure de capturer les invariances et de définir les caractéristiques de l'images (chats vs chien) afin d'en obtenir une compréhension générale.
 
 
-\section{Les datasets disponibles}
 
-\subsection{Google quickdraw}
-\subsection{Sketchy Database}
-
-
-
-\chapter{Tests et Problématiques}
-
-Comme nous l'avons vu les conditionnals Gan peuvent nous apporter une partie de de la solution. Nous avons décidé de tester plusieurs implémentations à notre dataset. 
-
-\section{Tests}
-
-\subsection{Application d'un filtre contour sur des peintures chinoise}
-
-\subsection{Association pix2pix et transfert de style}
-
-Le dataset est assez difficile à constituer car il existe une grande variétés de styles, techniques et courants ce qui le rend très étérogène. Pour palier à ce problème, une des expérience à été de combiner l'architecture pix2pix avec le transfert de style.
-
-Une fois le modèle entrainé, nous pouvons générer une photos de paysage à partir d'un croquis. 
-
-\includegraphics[width=0.7\linewidth]{images/pix2pix-t1.png}
-
-Il est alors possible d'appliquer un transfert de style, dont l'image de contenu est la photo générée et l'image de style une peinture chinoise.
-
-\includegraphics[width=0.7\linewidth]{images/pix2pix-t1-ts.jpg}
-
-Au final il serait peut-être plus judicieux de fabriquer directement un dataset croquis/peinture chinoise, dont les peintures auraient été générées en appliquant un transfert de style à des photos.
-
-
-\section{Problème des abstractions}
-
-Nous l'avons vu il est possible de générer un paysage à partir de quelques lignes. Cependant, nous sommes confronté à un problème avec ce type de répresentation en entrée : 
-
-\includegraphics[width=0.7\linewidth]{images/pix2pix-fail.png}
-
-En effet, le model n'as pas été confronté à ce type d'entrée, il n'est donc pas en mesure de faire le lien avec un arbre "réel". 
+\chapter{Propositions de solutions}
 
 Voici les solutions envisagées  :
- 
-- Dessiner les croquis du dataset à la main. Théoriquement, cette solution pourrait fonctionner mais il existe deux inconvenients majeurs : c'est fastidieux, et puis il faut mobiliser le plus de participants différents afin d'avoir des abstractions variées. Enfin le dataset sera très proche de la problématique du "paysage chinois"
 
-- Etre capable de générer une représentation abstraite à partir d'une photos ou d'une peinture. Nous pensons que le dataset quickdraw pourrait être un très bon point de départ.
+\section{Création du dataset en semi automatique}
 
-Il existe cependant de gros problèmes, lié à l'orientation de l'objet (ref), et bien connu des hors champs.
+En utilisant le logiciel LabelBox, il est possible de labeliser une image, en créant des sémantique layout[1]. Nous avons déjà un collection de plsu de 1000 images de peinture chinoises, les labelisés nous prendrait environ 2 jours hommes à raison d'une minute par image. Une fois cette étape réalisée, nous pourrions générer une ou plusieurs abstractions pour chaque peintures, en utilisant le dataset "quick draw" entre autres. Outre l'inconvénien du temps passé, cette solution n'est pas généralisable à autre chose que notre problématique.
 
-- Enfin il y a également la piste des "sémantiques layouts", utilisées par GauGan. Nous ne pouvons pas considérer les sémantique layout comme des abstractions. Mais nous constatons qu'il est possible via ces dernier de résoudres efficacement le probleme.
-
-\includegraphics[width=0.5\linewidth]{images/gaugan-abs-ex.jpeg}
-
-Il faudrait donc trouver le moyen de passer du croquis au sémantique layout
+\section{Photo-Sketching: Inferring Contour Drawings from Images}
 
 
-\chapter{Résultats et solutions apportées}
+\section{Abstraire une image via les CNN}
+Nous savons qu'un CNN est capable de détecter des caractéristiques d'une image
+
+
+Comme le prouve le travail de https://github.com/dribnet/perceptionengines, il est peut-être possible de générer un représentation abstraite en utilisant cette propriété des CNN.
 
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}

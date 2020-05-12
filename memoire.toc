@@ -1,20 +1,19 @@
 \babel@toc {french}{}
-\contentsline {chapter}{R\IeC {\'e}sum\IeC {\'e}}{i}
-\contentsline {chapter}{Remerciements}{iii}
-\contentsline {chapter}{Introduction}{1}
-\contentsline {section}{\numberline {0.1}Contexte}{1}
-\contentsline {chapter}{\numberline {1}Etat de l'art}{3}
-\contentsline {section}{\numberline {1.1}G\IeC {\'e}n\IeC {\'e}ralit\IeC {\'e} sur les GANs}{3}
-\contentsline {section}{\numberline {1.2}Pix2Pix}{4}
-\contentsline {section}{\numberline {1.3}GauGan}{4}
-\contentsline {section}{\numberline {1.4}Le transfert de style neuronal}{4}
-\contentsline {section}{\numberline {1.5}Les datasets disponibles}{5}
-\contentsline {subsection}{\numberline {1.5.1}Google quickdraw}{5}
-\contentsline {subsection}{\numberline {1.5.2}Sketchy Database}{5}
-\contentsline {chapter}{\numberline {2}Tests et Probl\IeC {\'e}matiques}{7}
-\contentsline {section}{\numberline {2.1}Tests}{7}
-\contentsline {subsection}{\numberline {2.1.1}Application d'un filtre contour sur des peintures chinoise}{7}
-\contentsline {subsection}{\numberline {2.1.2}Association pix2pix et transfert de style}{7}
-\contentsline {section}{\numberline {2.2}Probl\IeC {\`e}me des abstractions}{9}
-\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats et solutions apport\IeC {\'e}es}{11}
-\contentsline {chapter}{\numberline {4}Conclusion et Perspectives}{13}
+\contentsline {chapter}{Résumé}{i}%
+\contentsline {chapter}{Remerciements}{iii}%
+\contentsline {chapter}{Introduction}{1}%
+\contentsline {section}{\numberline {0.1}Contexte}{1}%
+\contentsline {section}{\numberline {0.2}Problématique}{1}%
+\contentsline {paragraph}{}{3}%
+\contentsline {paragraph}{}{3}%
+\contentsline {chapter}{\numberline {1}Etat de l'art}{5}%
+\contentsline {section}{\numberline {1.1}Généralité sur les GANs}{5}%
+\contentsline {paragraph}{}{5}%
+\contentsline {section}{\numberline {1.2}Pix2Pix}{6}%
+\contentsline {section}{\numberline {1.3}GauGan}{7}%
+\contentsline {section}{\numberline {1.4}Le transfert de style neuronal}{7}%
+\contentsline {chapter}{\numberline {2}Propositions de solutions}{9}%
+\contentsline {section}{\numberline {2.1}Création du dataset en semi automatique}{9}%
+\contentsline {section}{\numberline {2.2}Photo-Sketching: Inferring Contour Drawings from Images}{9}%
+\contentsline {section}{\numberline {2.3}Abstraire une image via les CNN}{9}%
+\contentsline {chapter}{\numberline {3}Conclusion et Perspectives}{11}%
