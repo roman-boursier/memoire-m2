@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.12)  12 MAY 2020 23:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.12)  16 MAY 2020 14:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -375,13 +375,24 @@ Package pdftex.def Info: images/m2ise.png  used on input line 47.
 ] [3]
 [4
 
-] (./memoire.toc)
+] (./memoire.toc
+Overfull \hbox (4.56058pt too wide) in paragraph at lines 18--18
+ [][] []\T1/cmr/m/n/12 Photo-Sketching :In-fer-ring Contour Dra-wings from Imag
+es []  
+ []
+
+)
 \tf@toc=\write3
 \openout3 = `memoire.toc'.
 
  [5] [6
 
 ]
+Overfull \hbox (0.32684pt too wide) in paragraph at lines 93--94
+[]\T1/cmr/m/n/12 De nom-breux tra-vaux au-tour de la "trans-la-tion d'image à i
+mage" [[]]
+ []
+
 <images/pix2pix-t1.png, id=41, 642.4pt x 481.8pt>
 File: images/pix2pix-t1.png Graphic file (type png)
 <use images/pix2pix-t1.png>
@@ -396,7 +407,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <images/pix2pix-fail.png, id=46, 462.528pt x 346.896pt>
 File: images/pix2pix-fail.png Graphic file (type png)
 <use images/pix2pix-fail.png>
-Package pdftex.def Info: images/pix2pix-fail.png  used on input line 105.
+Package pdftex.def Info: images/pix2pix-fail.png  used on input line 104.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 [2 <./images/pix2pix-t1.png> <./images/pix2pix-fail.png>]
@@ -430,85 +441,170 @@ Overfull \hbox (19.5786pt too wide) in paragraph at lines 115--119
 
 ]
 Chapitre 1.
-<images/tests_cgan.png, id=61, 462.528pt x 346.896pt>
+<images/tests_cgan.png, id=62, 462.528pt x 346.896pt>
 File: images/tests_cgan.png Graphic file (type png)
 <use images/tests_cgan.png>
-Package pdftex.def Info: images/tests_cgan.png  used on input line 152.
+Package pdftex.def Info: images/tests_cgan.png  used on input line 157.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 [5]
 
-LaTeX Warning: Command \textrightarrow invalid in math mode on input line 165.
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 162.
 
 
-LaTeX Warning: Command \textrightarrow invalid in math mode on input line 165.
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 162.
 
-<images/test-gaugan.png, id=69, 1505.625pt x 596.2275pt>
+[6 <./images/tests_cgan.png>]
+<images/test-gaugan.png, id=73, 1505.625pt x 596.2275pt>
 File: images/test-gaugan.png Graphic file (type png)
 <use images/test-gaugan.png>
-Package pdftex.def Info: images/test-gaugan.png  used on input line 173.
+Package pdftex.def Info: images/test-gaugan.png  used on input line 182.
 (pdftex.def)             Requested size: 390.0pt x 154.44234pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 173--174
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 182--183
 [][] 
  []
 
-
-Underfull \vbox (badness 4467) has occurred while \output is active []
-
- [6 <./images/tests_cgan.png>]
 <images/transfert-style_1.jpg, id=74, 642.4pt x 428.60126pt>
 File: images/transfert-style_1.jpg Graphic file (type jpg)
 <use images/transfert-style_1.jpg>
-Package pdftex.def Info: images/transfert-style_1.jpg  used on input line 186.
+Package pdftex.def Info: images/transfert-style_1.jpg  used on input line 195.
 (pdftex.def)             Requested size: 195.0pt x 130.09862pt.
 <images/transfert-style_2.jpg, id=75, 481.8pt x 321.45094pt>
 File: images/transfert-style_2.jpg Graphic file (type jpg)
 <use images/transfert-style_2.jpg>
-Package pdftex.def Info: images/transfert-style_2.jpg  used on input line 187.
+Package pdftex.def Info: images/transfert-style_2.jpg  used on input line 196.
 (pdftex.def)             Requested size: 195.0pt x 130.09862pt.
 <images/transfert-style_3.jpg, id=76, 501.875pt x 376.40625pt>
 File: images/transfert-style_3.jpg Graphic file (type jpg)
 <use images/transfert-style_3.jpg>
-Package pdftex.def Info: images/transfert-style_3.jpg  used on input line 188.
+Package pdftex.def Info: images/transfert-style_3.jpg  used on input line 197.
 (pdftex.def)             Requested size: 195.0pt x 146.25221pt.
 
-Overfull \hbox (20.2353pt too wide) in paragraph at lines 186--189
+Overfull \hbox (20.2353pt too wide) in paragraph at lines 195--198
 [][] []
  []
 
 
-Underfull \vbox (badness 2020) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7 <./images/test-gaugan.png> <./images/transfert-style_1.jpg> <./images/trans
-fert-style_2.jpg>] [8 <./images/transfert-style_3.jpg>]
+ [7 <./images/test-gaugan.png>]
+Overfull \hbox (5.6556pt too wide) in paragraph at lines 212--213
+\T1/cmr/m/n/12 supervisé. L'ob-jec-tif étant de pa-lier au "si-gnal de su-per-v
+i-sion faible et bruyant"
+ []
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 215.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 215.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 216.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 216.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 217.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 217.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 218.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 218.
+
+
+Overfull \hbox (11.87547pt too wide) in paragraph at lines 214--219
+\T1/cmr/m/n/12 - Une pre-mier "su-per-visé" qui tra-duit une photo en cro-quis 
+$\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm
+/m/it/12 photo\OT1/cmr/m/n/12 ))^^Y\OML/cmm/m/it/12 sketch$ 
+ []
+
+
+Overfull \hbox (67.8722pt too wide) in paragraph at lines 214--219
+\T1/cmr/m/n/12 - Un se-cond su-per-visé aussi qui ren-voie un cro-quis au do-ma
+ine photo $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
+ E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 sketch\OT1/cmr/m/n/12 ))^^Y\OML/cmm/m/it/12
+ photo\OT1/cmr/m/n/12 )$ 
+ []
+
+[8 <./images/transfert-style_1.jpg> <./images/transfert-style_2.jpg> <./images/
+transfert-style_3.jpg>]
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+LaTeX Warning: Command \textrightarrow invalid in math mode on input line 220.
+
+
+Overfull \hbox (233.48897pt too wide) in paragraph at lines 220--221
+[]\T1/cmr/m/n/12 Le pro-ces-sus com-plet d'une photo vers un cro-quis se-rait d
+onc : $\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ^^Y\OML/cmm/m/it/12 Ep\OT1/cmr/m/n/12 
+(\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )^^Y\OML/cmm/m/it/12 Ds\OT1/cmr/m/n/12 (\OML
+/cmm/m/it/12 Ep\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ))^^Y\OML/cmm
+/m/it/12 Es\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Ds\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 Ep\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ))^^Y\OML/cmm/m/it/12 Dp
+\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Es\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Ds\OT1/cm
+r/m/n/12 (\OML/cmm/m/it/12 Ep\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12
+ )))$ 
+ []
+
+
+Overfull \hbox (5.21266pt too wide) in paragraph at lines 223--223
+[]\T1/cmr/bx/n/14.4 Photo-Sketching :In-fer-ring Contour Dra-wings from
+ []
+
+[9] [10]
 Chapitre 2.
 
-Overfull \hbox (22.91576pt too wide) in paragraph at lines 209--210
+Overfull \hbox (22.91576pt too wide) in paragraph at lines 266--267
 []\T1/cmr/m/n/12 Comme le prouve le tra-vail de https ://-gi-thub.com/dribnet/p
 erceptionengines,
  []
 
-[9
+[11
 
-] [10
+] [12
 
 ]
 Chapitre 3.
-(./memoire.bbl [11] [12
+(./memoire.bbl [13] [14
 
-]) [13] (./memoire.aux)
+]) [15] (./memoire.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6942 strings out of 482463
- 98934 string characters out of 5946315
- 338930 words of memory out of 5000000
- 21907 multiletter control sequences out of 15000+600000
+ 6950 strings out of 482463
+ 99121 string characters out of 5946315
+ 339997 words of memory out of 5000000
+ 21915 multiletter control sequences out of 15000+600000
  547915 words of font info for 58 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
- 41i,10n,42p,653b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,42p,669b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/roro/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600p
 k> </home/roro/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
 k> </home/roro/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1200.600p
@@ -524,10 +620,10 @@ k> </home/roro/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1440.600p
 k></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on memoire.pdf (21 pages, 8864973 bytes).
+Output written on memoire.pdf (23 pages, 8890130 bytes).
 PDF statistics:
- 459 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
+ 518 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

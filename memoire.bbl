@@ -1,6 +1,11 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{GPAM{\etalchar{+}}14}
 
+\bibitem[EHA12]{eitz2012hdhso}
+Mathias Eitz, James Hays, and Marc Alexa.
+\newblock How do humans sketch objects?
+\newblock {\em ACM Trans. Graph. (Proc. SIGGRAPH)}, 31(4):44:1--44:10, 2012.
+
 \bibitem[GEB15]{DBLP:journals/corr/GatysEB15a}
 Leon~A. Gatys, Alexander~S. Ecker, and Matthias Bethge.
 \newblock A neural algorithm of artistic style.
@@ -10,5 +15,30 @@ Leon~A. Gatys, Alexander~S. Ecker, and Matthias Bethge.
 Ian~J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David
   Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio.
 \newblock Generative adversarial networks, 2014.
+
+\bibitem[IZZE16]{DBLP:journals/corr/IsolaZZE16}
+Phillip Isola, Jun{-}Yan Zhu, Tinghui Zhou, and Alexei~A. Efros.
+\newblock Image-to-image translation with conditional adversarial networks.
+\newblock {\em CoRR}, abs/1611.07004, 2016.
+
+\bibitem[LLM{\etalchar{+}}19]{DBLP:journals/corr/abs-1901-00542}
+Mengtian Li, Zhe Lin, Radom{\'{\i}}r Mech, Ersin Yumer, and Deva Ramanan.
+\newblock Photo-sketching: Inferring contour drawings from images.
+\newblock {\em CoRR}, abs/1901.00542, 2019.
+
+\bibitem[PLWZ19]{DBLP:journals/corr/abs-1903-07291}
+Taesung Park, Ming{-}Yu Liu, Ting{-}Chun Wang, and Jun{-}Yan Zhu.
+\newblock Semantic image synthesis with spatially-adaptive normalization.
+\newblock {\em CoRR}, abs/1903.07291, 2019.
+
+\bibitem[SBHH16]{sketchy2016}
+Patsorn Sangkloy, Nathan Burnell, Cusuh Ham, and James Hays.
+\newblock The sketchy database: Learning to retrieve badly drawn bunnies.
+\newblock {\em ACM Transactions on Graphics (proceedings of SIGGRAPH)}, 2016.
+
+\bibitem[SPS{\etalchar{+}}18]{DBLP:journals/corr/abs-1805-00247}
+Jifei Song, Kaiyue Pang, Yi{-}Zhe Song, Tao Xiang, and Timothy~M. Hospedales.
+\newblock Learning to sketch with shortcut cycle consistency.
+\newblock {\em CoRR}, abs/1805.00247, 2018.
 
 \end{thebibliography}

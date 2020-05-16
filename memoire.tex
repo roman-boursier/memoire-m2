@@ -90,7 +90,7 @@ Le modèle généré devra d'une part adopter la stylisation retenue mais aussi 
 
 \section{Problématique}
 
-De nombreux modèle comme pix2pix ou Gaugan permettent déjà de transférer un style d'une image à l'autre avec de bons résultats. La principale difficulté est de constituer un dataset de pairs abstraction/peintures sur lequel entraîner ces modeles. Ce dataset n'existe pas et l'enjeux est de notre point de vue, de trouver un moyen de le constituer.
+De nombreux travaux autour de la "translation d'image à image" \cite{DBLP:journals/corr/IsolaZZE16} permettent déjà d'obtenir de bons résultats.
 
 La figure n°1 montre qu'il est possible de générer un paysage à partir de quelques lignes. Cependant, nous sommes confronté à un problème avec la figure n°2.
 
@@ -100,7 +100,6 @@ La figure n°1 montre qu'il est possible de générer un paysage à partir de qu
 \label{fig1}
 \end{center}
 
-
 \begin{center}
 \includegraphics[scale=0.7]{images/pix2pix-fail.png}
 \captionof{figure}{Utilisation de pix2pix avec une abstraction d'arbre}
@@ -108,9 +107,10 @@ La figure n°1 montre qu'il est possible de générer un paysage à partir de qu
 \end{center}
 
 
-En effet, le model n'as pas été confronté à ce type d'entrée lors de son apprentissage, il n'est donc pas en mesure de reconstituer un arbre.
+Comme évoqué dans \cite{DBLP:journals/corr/abs-1805-00247} ce type de modèle se basent sur une corrélation d'une image à l'autre, et relève d'un apprentissage supervisé. Cependant la distance entre une abstraction et une peinture est dans notre cas trop grande, ce qui nous indique peut-être que ce problème relève d'une part de "non supervisé". 
 
-Nous avons demandé à un plusieurs personnes de dessiner schématiquement un paysage composé de montagnes et d'arbres éléments typiques d'une peinture chinoise: 
+
+Nous avons demandé à un plusieurs personnes de dessiner schématiquement un paysage composé de montagnes et d'arbres éléments courants dans une peinture de paysages chinoise: 
 \paragraph{}
 \includegraphics[width=0.25\linewidth]{images/croquis_1.jpg}
 \includegraphics[width=0.25\linewidth]{images/croquis_3.jpg}
@@ -118,7 +118,10 @@ Nous avons demandé à un plusieurs personnes de dessiner schématiquement un pa
 \includegraphics[width=0.25\linewidth]{images/croquis_5.jpg}
 \paragraph{}
 
-Nous pouvons dire que ce type de dessins constitue des "abstractions", que nous souhaitons convertir en peinture chinoises. Nous pouvons déjà noter qu'il n'existe pas une seule façon de représenter un paysage mais plusieurs. Selon le dessinateur, les dessins possèdent des niveaux "d'informations" plus ou moins élévé, c'est à dire plus ou moins "abstraits". La figure n°1 nous indique des arbres, mais nous ne savons rien de la forme potentiel que ceux-ci pourrais avoir (bien que nous pouvons dire qu'il s'agit plutôt d'un sapin que d'un pin). Tandis que sur la figure n°2 nous avons déjà plus de détails.
+
+Nous pouvons dire que ce type de dessins constitue des "abstractions", que nous souhaitons convertir en peinture chinoises. En tant qu'humain nous percevons les objets de manière abstraite et sémantique.
+
+Nous pouvons déjà noter qu'il n'existe pas une seule façon de représenter un paysage mais plusieurs. Selon le dessinateur, les dessins possèdent des niveaux "d'informations" plus ou moins élévé, c'est à dire plus ou moins "abstraits". La figure n°1 nous indique des arbres, mais nous ne savons rien de la forme potentiel que ceux-ci pourrais avoir (bien que nous pouvons dire qu'il s'agit plutôt d'un sapin que d'un pin). Tandis que sur la figure n°2 nous avons déjà plus de détails.
 
 
 
@@ -147,6 +150,8 @@ Les poids sont donc mis à jours pour :
 
 Pour résumer c'est une sorte de jeu, dans lequel le générateur essai de maximiser la probabilité que sa sortie soit reconnu comme réel, tandis que le discriminateur essai de minimiser la même valeur.
 
+Mathématiquement La fonction de perte peut-être écrite ainsi : 
+
 
 \begin{center}
 \includegraphics[scale=0.7]{images/tests_cgan.png}
@@ -154,26 +159,30 @@ Pour résumer c'est une sorte de jeu, dans lequel le générateur essai de maxim
 \label{fig1}
 \end{center}
 
+Les Gans conditionnels que nous abordons plus en détails plus loin, apprennent à partir d'une observation $x$ et d’un vecteur de bruit aléatoire $z$, vers $y$:$G:{x,z} →y$.
 
 Il existe aujourd'hui une très grande variété de travaux de recherches implémentants les Gans (CGAN, Bayesian GAN, GYCLE GAN ...). Nous présentons ici des solutions existantes permettant de répondre partiellement à notre problématique.
 
 
-\section{Pix2Pix}
+\section{Génération d'image conditionnels}
+
+Grâce aux conditionnals GANs il est aujourd'hui  possibles de générer des image réalistes basées sur des labels de classes, des textes ou des images.
+
+
+\subsection{pix2pix}
 Phillip Isola, Jun-Yan Zhu, Tinghui Zhou et Alexei A. Efros proposent en 2014 une nouvelle approche intitulée Image-to-Image Translation with Conditional Adversarial Networks.\cite{DBLP:journals/corr/GatysEB15a}
 Leur contribution principale fut de montrer en quoi les cGans peuvent permettre de résoudre efficacement les problèmes de translation d'image et ainsi de proposer un framework pouvant être appliqué à n'importe quel domaine.
 
-Les Gans conditionnels apprennent une cartographie à partir d’images observées $x$ et d’un vecteur de bruit aléatoire $z$, vers $y$:$G:{x,z} →y$. 
+\subsection{GauGan}
+Nvidia \cite{DBLP:journals/corr/abs-1903-07291} présente en 2019 une forme spécifique de génération d'image basé sur des "semantic segmentation mask". 
 
-L"architecture utilise "U-Net" pour le générateur et "PatchGAN" pour le discriminateur.
+Selon les auteurs, les couches de normalizations ont tendance à faire perdre l' l'information contenu dans les masques sémantiques d'entrées car ils ne dépendent pas  de données externe. Ces derniers introduisent donc la notion de "normalization conditionnel" ou "adaptative", permettant notamment de prendre en compte les informations spatials.
 
-
-
-\section{GauGan}
 
 \includegraphics[width=1\linewidth]{images/test-gaugan.png}
 
 
-\section{Le transfert de style neuronal}
+\subsection{Le transfert de style neuronal}
 
 Cette technique fut décrite par Leon A. Gatys dans son article "A Neural Algorithm of Artistic Style".~\cite{DBLP:journals/corr/GatysEB15a}
 
@@ -189,6 +198,54 @@ L'objectif est de transformer l'image d'entrée en minimisant la distance avec l
 
 Cela nécessite la création d'un réseau convolutionnel, en effet le modèle doit être en mesure de capturer les invariances et de définir les caractéristiques de l'images (chats vs chien) afin d'en obtenir une compréhension générale.
 
+
+L'avantage de cette technique est quelle nécessite pas de dataset à proprement parlé, seulement deux images en guise d'input
+
+
+
+\subsection{Cycle Gan}
+
+\subsection{Learning to Sketch}
+
+Ce travail \cite{DBLP:journals/corr/abs-1805-00247} est important pour nous car il présente une méthode permettant de transformer une photos en croquis, en essayant d'imiter la façon de faire d'un humain. Leur model est capable de réaliser le croquis séquentiellement, c'est à dire ligne par ligne.
+ 
+Les auteurs proposent de résoudre le problème "des styles subjectifs et variés de dessin humain" en utilisant un modèle hydride supervisé et non-supervisé. L'objectif étant de palier au "signal de supervision faible et bruyant" induit par l'écart important entre un croquis sa photo correspondante.
+
+L'architecture est décomposé en 4 sous-modèle contenant chacuns leur propres sous-réseaux d'encodeurs et de décodeur : \\
+- Une premier "supervisé" qui traduit une photo en croquis $D(E(photo))→sketch$ \\
+- Un second supervisé aussi qui renvoie un croquis au domaine photo $(D(E(sketch))→photo)$ \\
+- Un troisième non-supervisé pour reconstruire la photo $D(E(photo))→photo$
+- Le dernier non-supervisé pour reconstruire le croquis $D(E(sketch))→sketch$
+
+Le processus complet d'une photo vers un croquis serait donc : $x→Ep(x)→Ds(Ep(x))→Es(Ds(Ep(x))→Dp(Es(Ds(Ep(x)))$
+
+
+\subsection{Photo-Sketching:Inferring Contour Drawings from Images}
+
+
+"Les bords, les limites et les contours sont des sujets importants dans l’étude de la vision par ordinateur" \cite{DBLP:journals/corr/abs-1901-00542} 
+
+L'article nous présente une technique pour générer un dessin de contour à partir d'une photo. Les Les "edges detector" traditionnels comme Canny, captent uniquement les signaux de haute fréquence dans l’image sans la comprendre. 
+
+Les auteurs on collecté un dataset de 5000 pairs dessin/photos, créer la la plateform de crowdsourcing "Amazon Mechanical Turk". En effet aucun dataset de croquis actuellement connu ne répondait à la problématique (nombre d'éléments dans l'image, limites internes manquantes, le contenu non reconnaissable, les zones ombrées vides etc ..). Au final il s'agit d'un problème d'image-to-image translation. 
+
+Un élément intéressant de ce modèle la possibilité d'avoir plusieurs labels différents pour la même image, car comme vu en ... Le même objet peut être interprété des plusieurs manière différentes. 
+
+
+\subsection{Datasets disponibles}
+Il est évident qu'il n'existe pas à l'heure actuel de dataset de paires croquis/peinture chinoise.
+
+\subsubsection{Sketch}
+Un des principaux problème de la recherche dans le domaine de la génération de croquis est le manque de dataset disponible. Aujourd'hui les plus grosses base de donnée que nous avons trouvé sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. BSDS500
+
+L'article (https://arxiv.org/pdf/1901.00542.pdf) est intéréssant car il nous offre une classification du niveau d'abstraction des croquis.
+Un paramètre à prendre en compte également et le faite qu'il existe plus element dans le croquis.
+
+
+Photo/croquis pair QMUL-Shoe-Chair-V2 dataset [46], qui contient plus de 8000 exemples.
+
+\subsubsection{Peinture chinoises}
+"La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{} Il existe beaucoup de style courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). Nous avons aujourd'hui "scrapé" une collection de plus de 800 peintures.  noté qu'un des problèmes auquel nous allons faire face et la multiplicité des homothéties (Kakemono, paysage). Comme évoqué dans \cite{}, Les RCNN n'acceptent des images de tailles différents, il faudra donc trouver un moyen de trouver un bon compromis dans le redimensionnement de notre dataset.
 
 
 \chapter{Propositions de solutions}
