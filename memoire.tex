@@ -114,7 +114,7 @@ En Figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessin
     \includegraphics[angle=90, height=0.15\textheight]{images/croquis_4.jpg}\\
     (a)&(b)&(c)
   \end{tabular}
-  \captionof{figure}{Dessin de paysages réalisés par des personnes différentes. On note que les niveaux d'informations sont plus ou moins élevés. Le dessin (b) est très abstrait tandis que nous possédons plus de détails au niveau de (a) .\label{fig-croquis}}
+  \captionof{figure}{Dessin de paysages réalisés par des personnes différentes. On note que les niveaux d'informations sont plus ou moins élevés. Le dessin (b) est très abstrait tandis que nous observons plus de détails pour (a) .\label{fig-croquis}}
 \end{center}
 
 
@@ -184,7 +184,7 @@ L'architecture est décomposé en 4 sous-modèles contenants chacun leur propres
 \subsection{Sketching: Inferring Contour Drawings from Images}
 \cite{DBLP:journals/corr/abs-1901-00542} propose une nouvelle approche concernant la détection des contours dans une image. L'article montre que les solutions traditionnelles comme Canny \cite{4767851} , captent uniquement les signaux de haute fréquence dans l’image sans la comprendre. Les auteurs ont collecté un dataset de 5000 pairs "croquis humain/photos", crée manuellement via la plateforme de crowdsourcing "Amazon Mechanical Turk". En effet aucun dataset existant ne convenait (nombre d'éléments dans l'image, limites internes manquantes, le contenu non reconnaissable, les zones ombrées vides etc ..).
 
-Ce modèle également du type "traduction image-image", permet d'avoir plusieurs labels différents pour la même photo, ce qui correspond bien à la nature subjective du dessin humain.
+Ce modèle également du type "traduction image-image", permet d'avoir plusieurs labels différents pour la même photo, prenant en compte la nature subjective du dessin humain.
 
 \section{Autre algorithmes n'utilisant pas le deep learning}
 TODO
@@ -211,8 +211,8 @@ En utilisant le logiciel LabelBox, il est possible de labelliser manuellement un
 \section{Photo-Sketching: Inferring Contour Drawings from Images}
 Todo : Fakhri
 
-\section{Abstraire une image via les CNN}
-Nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://github.com/dribnet/perceptionengines, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement d'un cGAN type "traduction image-image". 
+\section{Abstraire une image via les RCNN}
+Nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://medium.com/artists-and-machine-intelligence/perception-engines-8a46bc598d57, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement d'un cGAN type "traduction image-image". 
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
 

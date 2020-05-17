@@ -18,5 +18,5 @@
 \contentsline {chapter}{\numberline {2}Propositions de solutions}{11}%
 \contentsline {section}{\numberline {2.1}Création du dataset en semi automatique}{11}%
 \contentsline {section}{\numberline {2.2}Photo-Sketching: Inferring Contour Drawings from Images}{11}%
-\contentsline {section}{\numberline {2.3}Abstraire une image via les CNN}{11}%
+\contentsline {section}{\numberline {2.3}Abstraire une image via les RCNN}{11}%
 \contentsline {chapter}{\numberline {3}Conclusion et Perspectives}{13}%
