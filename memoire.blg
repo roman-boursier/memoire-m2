@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: memoire.aux
 The style file: alpha.bst
 Database file #1: memoire.bib
-You've used 8 entries,
+You've used 11 entries,
             2543 wiz_defined-function locations,
-            602 strings with 5996 characters,
-and the built_in function-call counts, 3451 in all, are:
-= -- 321
-> -- 263
-< -- 0
-+ -- 101
-- -- 99
-* -- 276
-:= -- 638
-add.period$ -- 23
-call.type$ -- 8
-change.case$ -- 68
-chr.to.int$ -- 8
-cite$ -- 8
-duplicate$ -- 102
-empty$ -- 179
-format.name$ -- 104
-if$ -- 647
-int.to.chr$ -- 1
+            622 strings with 6533 characters,
+and the built_in function-call counts, 4113 in all, are:
+= -- 397
+> -- 245
+< -- 4
++ -- 93
+- -- 88
+* -- 291
+:= -- 733
+add.period$ -- 35
+call.type$ -- 11
+change.case$ -- 76
+chr.to.int$ -- 10
+cite$ -- 11
+duplicate$ -- 140
+empty$ -- 259
+format.name$ -- 101
+if$ -- 799
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 7
-newline$ -- 43
-num.names$ -- 24
-pop$ -- 53
+missing$ -- 8
+newline$ -- 61
+num.names$ -- 33
+pop$ -- 67
 preamble$ -- 1
-purify$ -- 76
+purify$ -- 87
 quote$ -- 0
-skip$ -- 96
+skip$ -- 125
 stack$ -- 0
-substring$ -- 92
-swap$ -- 8
-text.length$ -- 0
-text.prefix$ -- 0
+substring$ -- 136
+swap$ -- 11
+text.length$ -- 4
+text.prefix$ -- 4
 top$ -- 0
-type$ -- 64
+type$ -- 88
 warning$ -- 0
-while$ -- 26
-width$ -- 12
-write$ -- 103
+while$ -- 32
+width$ -- 15
+write$ -- 146
