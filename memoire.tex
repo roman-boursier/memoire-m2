@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{book}
+\documentclass[a4paper, 12pt]{report}
 \usepackage{graphicx}
 \usepackage[french]{babel}
 \usepackage{caption}
@@ -61,7 +61,6 @@
     \hspace{-0.45cm}Tuteur -- Université~:~&~Farès \textsc{BELHADJ}\\
   \end{tabular}
 \end{titlepage}
-\frontmatter
 \chapter*{Résumé}
 \markboth{\sc Résumé}{}
 \addcontentsline{toc}{chapter}{Résumé} 
@@ -78,7 +77,6 @@ Idem ...
 %% Table des matières
 \tableofcontents
 
-\mainmatter
 \chapter*{Introduction}
 \markboth{\sc Introduction}{}
 \addcontentsline{toc}{chapter}{Introduction}
@@ -116,7 +114,7 @@ En Figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessin
     \includegraphics[angle=90, height=0.15\textheight]{images/croquis_4.jpg}\\
     (a)&(b)&(c)
   \end{tabular}
-  \captionof{figure}{Dessin de paysages réalisés par des personnes différentes. On note que les niveaux d'informations sont plus ou moins élevés. Le dessin (b) est très abstrait tandis que (a) nous fournis plus d'indications..\label{fig-croquis}}
+  \captionof{figure}{Dessin de paysages réalisés par des personnes différentes. On note que les niveaux d'informations sont plus ou moins élevés. Le dessin (b) est très abstrait tandis que nous possédons plus de détails au niveau de (a) .\label{fig-croquis}}
 \end{center}
 
 
@@ -134,7 +132,7 @@ Un générateur fabrique des données et les soumets au discriminateur dont le b
 
 Le générateur $G(z, \theta_{1})$ représente un réseau de neurones capable de mapper du bruit $z$ vers l'espace désiré $x$. Le discriminateur $D(z, \theta_{2})$ retourne la probabilité dans l'intervalle $[0,1]$ que $x$ vient du dataset original. $\theta_{i}$ représente les poids définis par chacun des modèles. Le générateur tente de maximiser la probabilité que les données $x$, soient classifiées comme appartenant au dataset d'origine et inversement, le discriminateur minimise la probabilité que de fausses images appartiennent au dataset d'origine.
 
-Il existe aujourd'hui une très grande variété de travaux de recherches basés les GANs (BCGAN, AmbientGAN,ORGAN, Perceptual GAN). Le dépôt "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de GANs différents !
+Il existe aujourd'hui une très grande variété de travaux de recherches basés les GANs (BCGAN, AmbientGAN, ORGAN, Perceptual GAN). Le dépôt "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de GANs différents !
 
 
 \section{CGANs et traduction d'image}
@@ -145,7 +143,7 @@ Les GANs conditionnels ajoutent une information supplémentaire $y$, partagée p
 \cite{DBLP:journals/corr/GatysEB15a} nous montre en quoi les cGANs peuvent permettre de résoudre efficacement les problèmes de traductions d'images et propose un framework applicable à n'importe quel domaine.
 
 \subsection{GauGan}
-\cite{DBLP:journals/corr/abs-1903-07291} permet de générer des paysage réalistes basés sur des "semantic segmentation mask". Les auteurs introduisent la "normalisation conditionnel" ou "adaptative",  permettant de prendre en compte notamment les informations spatials.
+\cite{DBLP:journals/corr/abs-1903-07291} permet de générer des paysages réalistes basés sur des masques de segmentation sémantiques. Les auteurs introduisent la "normalisation conditionnel" ou "adaptative", permettant de prendre en compte notamment les informations spatials.
 Les couches de normalisations ont tendances à faire perdre de l'information contenu dans les masques sémantiques d'entrées car ils ne dépendent pas de données externes.
 
 \begin{center}
@@ -153,7 +151,7 @@ Les couches de normalisations ont tendances à faire perdre de l'information con
   \begin{tabular}{cc}
     \includegraphics[height=0.15\textheight]{images/test-gaugan-sm.jpg}&
     \includegraphics[height=0.15\textheight]{images/test-gaugan.jpg}\\
-    (a) Input - Sémantic segmentation mask &(b) Output
+    (a) Input - masques de segmentation sémantiques &(b) Output
   \end{tabular}
   \captionof{figure}{Test de rendu de paysage à partir de l'application Gaugan : http://nvidia-research-mingyuliu.com/gaugan/\label{fig-gaugan}}
 \end{center}
@@ -173,7 +171,7 @@ L'avantage de cette technique est quelle ne nécessite pas de dataset, seulement
     \includegraphics[height=0.15\textheight]{images/gaugan-tds.jpg}\\
     (a) Image de contenu & (b) Image de style &(c) Résultat
   \end{tabular}
-  \captionof{figure}{Test de transfert de style réalisé à partir de la figure \ref{fig-gaugan}\label{fig-transfert-de-style}}
+  \captionof{figure}{Test de transfert de style réalisé à partir de la figure \ref{fig-gaugan}\label{fig-transfert-de-style}(b)}
 \end{center}
 
 
@@ -196,7 +194,7 @@ TODO
 Il est évident qu'il n'existe pas à l'heure actuel de dataset de paires abstraction/peinture chinoise.
 
 \subsection{Croquis/abstractions}
-Un des principaux problème de la recherche dans le domaine de la génération de dessins à la main est le manque de dataset disponibles. Aujourd'hui les plus grosses bases de données que nous avons trouvées sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. A noter que tous ces datasets sont constitués d'objets "isolés" et non composés comme peut l'être une peinture chinoise.
+Un des principal problème de la recherche dans le domaine de la génération de dessins à la main est le manque de dataset. Aujourd'hui les plus grosses bases de données que nous avons trouvées sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. A noter que tous ces datasets sont constitués d'objets "isolés" et non composés comme peut l'être une peinture chinoise.
 
 \subsection{Peinture chinoises}
 "La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{wiki:Peinture-chinoise} Il existe beaucoup de styles, courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). Nous prévoyons d'exploiter un dataset de plus de 5000 peintures chinoises au format 256x256, récupérées depuis \cite{ychen93}
@@ -214,7 +212,7 @@ En utilisant le logiciel LabelBox, il est possible de labelliser manuellement un
 Todo : Fakhri
 
 \section{Abstraire une image via les CNN}
-Nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://github.com/dribnet/perceptionengines, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement cGAN type "traduction image-image". 
+Nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://github.com/dribnet/perceptionengines, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement d'un cGAN type "traduction image-image". 
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
 
