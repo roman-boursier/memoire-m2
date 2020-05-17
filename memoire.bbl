@@ -64,4 +64,9 @@ Wikipedia.
   2020.
 \newblock [Online; accessed 17-May-2020].
 
+\bibitem[ych18]{ychen93}
+ychen93.
+\newblock The gan zoo.
+\newblock \url{https://github.com/ychen93/Chinese-Painting-Dataset}, 2018.
+
 \end{thebibliography}

@@ -104,9 +104,9 @@ La "traduction image-image" (Image-to-image translation) permet d'apprendre le m
 \label{fig-pix2pix-fail}
 \end{center}
 
-Comme évoqué dans \cite{DBLP:journals/corr/abs-1805-00247} ce type d'algorithmes se basent essentiellement sur la corrélation d'une image à l'autre, et relève d'un apprentissage supervisé. L'échec présenté en Figure \ref{fig-pix2pix-fail} s'explique par la nature du dataset et par la distance importante qui sépare une abstraction d'une photo. 
+Comme évoqué dans \cite{DBLP:journals/corr/abs-1805-00247} les algorithmes du type "traduction image-image" se basent essentiellement sur la corrélation d'une image à l'autre, et relève d'un apprentissage supervisé. Le rendu en Figure \ref{fig-pix2pix-fail} s'explique par la nature du dataset et par la distance importante qui sépare une abstraction d'une photo. 
 
-En Figure \ref{fig-croquis} avons demandé à plusieurs personnes de dessiner schématiquement un paysage composé de montagnes et d'arbres, éléments courant dans une peinture chinoise. Ces dessins sont des abstractions, que nous souhaitons traduire en peintures chinoises.
+En Figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessiner schématiquement un paysage composé de montagnes et d'arbres, éléments courant de la peinture chinoise. Ces dessins sont des abstractions, que nous souhaitons traduire en peintures chinoises.
 
 \begin{center}
   \centering
@@ -116,14 +116,14 @@ En Figure \ref{fig-croquis} avons demandé à plusieurs personnes de dessiner sc
     \includegraphics[angle=90, height=0.15\textheight]{images/croquis_4.jpg}\\
     (a)&(b)&(c)
   \end{tabular}
-  \captionof{figure}{Dessin de paysage réalisés par des personnes différentes. On note que les niveaux d'informations sont plus ou moins élevés. Le dessin (b) est très abstrait tandis que (a) nous fournis plus d'indications..\label{fig-croquis}}
+  \captionof{figure}{Dessin de paysages réalisés par des personnes différentes. On note que les niveaux d'informations sont plus ou moins élevés. Le dessin (b) est très abstrait tandis que (a) nous fournis plus d'indications..\label{fig-croquis}}
 \end{center}
 
 
 
 \chapter{Etat de l'art}
  
-Nous présenterons dans un premier les GANs qui sont au coeur de notre problématique. Dans un second temps, nous étudierons différents modèles existants basés essentiellement sur les GANs conditionnels. Nous évoquerons, de manière plus succincte, des travaux liés à notre sujet mais n'utilisant pas les réseaux de neurones afin de pouvoir identifier les avantages et inconvénients des deux mondes. Nous terminerons par une liste des datasets utiles à notre sujet.
+Nous présentons dans un premier temps les GANs qui sont au coeur de notre problématique. En un second lieu, nous étudions différents modèles existants basés sur les GANs conditionnels. Nous évoquons aussi, de manière plus succincte, des travaux liés à notre sujet mais n'utilisant pas les réseaux de neurones afin de pouvoir identifier les avantages et inconvénients des deux mondes. Nous terminons par une liste des datasets utiles à notre sujet.
 
 
 \section{Généralités sur les GANs}
@@ -132,26 +132,33 @@ Nous présenterons dans un premier les GANs qui sont au coeur de notre probléma
 
 Un générateur fabrique des données et les soumets au discriminateur dont le but est d'évaluer leurs degré de crédibilité. 
 
-Le générateur $G(z, \theta_{1})$ représente un réseau de neurones capable de mapper du bruit $z$ vers l'espace désiré $x$. Le discriminateur $D(z, \theta_{2})$ retourne la probabilité dans l'intervalle $[0,1]$ que $x$ vient du dataset original. $\theta_{i}$ représente les poids définis par chacun des modèles. Le générateur tente de maximiser la probabilité que les données $x$, soient classifiées comme appartenant au dataset d'origine et inversement le discriminateur minimise la probabilité que de fausse images appartiennent au dataset d'origine.
+Le générateur $G(z, \theta_{1})$ représente un réseau de neurones capable de mapper du bruit $z$ vers l'espace désiré $x$. Le discriminateur $D(z, \theta_{2})$ retourne la probabilité dans l'intervalle $[0,1]$ que $x$ vient du dataset original. $\theta_{i}$ représente les poids définis par chacun des modèles. Le générateur tente de maximiser la probabilité que les données $x$, soient classifiées comme appartenant au dataset d'origine et inversement, le discriminateur minimise la probabilité que de fausses images appartiennent au dataset d'origine.
 
-Il existe aujourd'hui une très grande variété de travaux de recherches basés les GANs (BCGAN, AmbientGAN,ORGAN, Perceptual GAN). Le dépot Github "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de Gans différents !
+Il existe aujourd'hui une très grande variété de travaux de recherches basés les GANs (BCGAN, AmbientGAN,ORGAN, Perceptual GAN). Le dépôt "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de GANs différents !
+
 
 \section{CGANs et traduction d'image}
 
-Les GANs conditionnels ajoutent une information supplémentaire $y$ partagée par le discriminateur et le générateur. Grâce aux cGANs il est possible de générer des images réalistes basées sur des labels de classes, des textes ou des images.
+Les GANs conditionnels ajoutent une information supplémentaire $y$, partagée par le discriminateur et le générateur. Grâce aux cGANs il est possible de générer des images réalistes basées sur des labels de classes, des textes ou des images.
 
 \subsection{Pix2Pix}
-\cite{DBLP:journals/corr/GatysEB15a} nous montre en quoi les cGANs peuvent permettre de résoudre efficacement les problèmes de traduction d'image et propose un framework applicable à n'importe quel domaine.
+\cite{DBLP:journals/corr/GatysEB15a} nous montre en quoi les cGANs peuvent permettre de résoudre efficacement les problèmes de traductions d'images et propose un framework applicable à n'importe quel domaine.
 
 \subsection{GauGan}
-\cite{DBLP:journals/corr/abs-1903-07291} permet de générer des paysage réalistes basés sur des "semantic segmentation mask". Les auteurs introduisent la notion de "normalisation conditionnel" ou "adaptative",  permettant notamment de prendre en compte les informations spatials.
-En effet, les couches de normalisations ont tendances à faire perdre de l'information contenu dans les masques sémantiques d'entrées car ils ne dépendent pas de données externe.
+\cite{DBLP:journals/corr/abs-1903-07291} permet de générer des paysage réalistes basés sur des "semantic segmentation mask". Les auteurs introduisent la "normalisation conditionnel" ou "adaptative",  permettant de prendre en compte notamment les informations spatials.
+Les couches de normalisations ont tendances à faire perdre de l'information contenu dans les masques sémantiques d'entrées car ils ne dépendent pas de données externes.
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{images/test-gaugan.png}
-\captionof{figure}{Test de rendu de paysage à partir de l'application Gaugan : http://nvidia-research-mingyuliu.com/gaugan/}
-\label{fig-gaugan}
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[height=0.15\textheight]{images/test-gaugan-sm.jpg}&
+    \includegraphics[height=0.15\textheight]{images/test-gaugan.jpg}\\
+    (a) Input - Sémantic segmentation mask &(b) Output
+  \end{tabular}
+  \captionof{figure}{Test de rendu de paysage à partir de l'application Gaugan : http://nvidia-research-mingyuliu.com/gaugan/\label{fig-gaugan}}
 \end{center}
+
+
 
 \subsection{Transfert de style neuronal} 
 Introduit par Leon A. Gatys \cite{DBLP:journals/corr/GatysEB15a} le TDN consiste à transférer un style à partir d'une image de référence vers une image de contenu. L'objectif est de transformer l'image d'entrée (bruit) en minimisant la distance avec l'image de contenu et avec l'image de style. On obtient alors par rétropagation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
@@ -161,26 +168,25 @@ L'avantage de cette technique est quelle ne nécessite pas de dataset, seulement
 \begin{center}
   \centering
   \begin{tabular}{ccc}
-    \includegraphics[height=0.15\textheight]{images/transfert-style_1.jpg}&
-    \includegraphics[height=0.15\textheight]{images/transfert-style_3.jpg}&
-    \includegraphics[height=0.15\textheight]{images/transfert-style_2.jpg}\\
+    \includegraphics[height=0.15\textheight]{images/test-gaugan.jpg}&
+    \includegraphics[height=0.15\textheight]{images/transfert-ds.jpg}&
+    \includegraphics[height=0.15\textheight]{images/gaugan-tds.jpg}\\
     (a) Image de contenu & (b) Image de style &(c) Résultat
   \end{tabular}
-  \captionof{figure}{Test réalisé sur un algorithme de transfert de style neuronal.\label{fig-transfert-de-style}}
+  \captionof{figure}{Test de transfert de style réalisé à partir de la figure \ref{fig-gaugan}\label{fig-transfert-de-style}}
 \end{center}
 
 
 \subsection{Learning to Sketch} 
-\cite{DBLP:journals/corr/abs-1805-00247} présente une méthode permettant de transformer une photo en croquis, en essayant d'imiter la façon de faire d'un humain. Leur modèle est capable de réaliser le croquis séquentiellement, c'est à dire trait par trait. Les auteurs proposent de résoudre le problème "des styles subjectifs et variés des dessins humain" en utilisant un modèle hybride supervisé/non-supervisé. L'objectif étant de palier au "signal de supervision faible et bruyant" induit par l'écart important entre un croquis sa photo correspondante. \\
+\cite{DBLP:journals/corr/abs-1805-00247} présente une méthode permettant de transformer une photo en croquis, en essayant d'imiter la façon de faire d'un humain. Le modèle est capable de réaliser le croquis séquentiellement, c'est à dire trait par trait. Les auteurs proposent de résoudre le problème des styles subjectifs et variés des dessins humain en utilisant un modèle hybride supervisé/non-supervisé. L'objectif étant de palier "au signal de supervision faible et bruyant" induit par l'écart important entre un croquis et sa photo correspondante. \\
 
-L'architecture est décomposé en 4 sous-modèles contenant chacun leur propres sous-réseaux d'encodeurs et de décodeurs. Deux réseaux supervisés traduisent respectivement une photo en croquis $D(E(photo))\to sketch$ et un croquis en photo $(D(E(sketch))\to photo)$ . Deux autres réseaux non-supervisés se chargent de la reconstruction. $D(E(photo))\to photo$ et $D(E(sketch))\to sketch$  \\
+L'architecture est décomposé en 4 sous-modèles contenants chacun leur propres sous-réseaux d'encodeurs et de décodeurs. Deux réseaux supervisés traduisent respectivement une photo en croquis $D(E(photo))\to sketch$ et un croquis en photo $(D(E(sketch))\to photo)$ . Deux autres réseaux non-supervisés se chargent de la reconstruction. $D(E(photo))\to photo$ et $D(E(sketch))\to sketch$  \\
 
-Le processus complet d'une photo vers un croquis : \\ $x\to Ep(x)\to Ds(Ep(x))\to Es(Ds(Ep(x))\to Dp(Es(Ds(Ep(x)))$
 
 \subsection{Sketching: Inferring Contour Drawings from Images}
-\cite{DBLP:journals/corr/abs-1901-00542} propose une nouvelle approche concernant la détection des contours dans une image. L'article montre que les solutions traditionnelles comme Canny \cite{4767851} , captent uniquement les signaux de haute fréquence dans l’image sans la comprendre. Les auteurs ont collecté un dataset de 5000 pairs "croquis humain/photos", crée via la plateforme de crowdsourcing "Amazon Mechanical Turk". En effet, aucun dataset disponible ne répond à la problématique (nombre d'éléments dans l'image, limites internes manquantes, le contenu non reconnaissable, les zones ombrées vides etc ..).
+\cite{DBLP:journals/corr/abs-1901-00542} propose une nouvelle approche concernant la détection des contours dans une image. L'article montre que les solutions traditionnelles comme Canny \cite{4767851} , captent uniquement les signaux de haute fréquence dans l’image sans la comprendre. Les auteurs ont collecté un dataset de 5000 pairs "croquis humain/photos", crée manuellement via la plateforme de crowdsourcing "Amazon Mechanical Turk". En effet aucun dataset existant ne convenait (nombre d'éléments dans l'image, limites internes manquantes, le contenu non reconnaissable, les zones ombrées vides etc ..).
 
-Ce modèle permet d'avoir plusieurs labels différents pour la même image, car une même photo peut-être interprétée par le dessin de plusieurs façon différentes.
+Ce modèle également du type "traduction image-image", permet d'avoir plusieurs labels différents pour la même photo, ce qui correspond bien à la nature subjective du dessin humain.
 
 \section{Autre algorithmes n'utilisant pas le deep learning}
 TODO
@@ -190,31 +196,25 @@ TODO
 Il est évident qu'il n'existe pas à l'heure actuel de dataset de paires abstraction/peinture chinoise.
 
 \subsection{Croquis/abstractions}
-Un des principaux problème de la recherche dans le domaine de la génération de croquis est le manque de dataset disponible. Aujourd'hui les plus grosses bases de données que nous avons trouvées sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. \cite{DBLP:journals/corr/abs-1901-00542} offre une classification du niveau d'abstraction de ces datasets. A noter que tous ces datasets sont constitués d'objets "isolés" et non composé comme l'est une peinture chinoise.
+Un des principaux problème de la recherche dans le domaine de la génération de dessins à la main est le manque de dataset disponibles. Aujourd'hui les plus grosses bases de données que nous avons trouvées sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. A noter que tous ces datasets sont constitués d'objets "isolés" et non composés comme peut l'être une peinture chinoise.
 
-\subsubsection{Peinture chinoises}
-"La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{wiki:Peinture-chinoise} Il existe beaucoup de styles, courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). 
-
-Nous avons aujourd'hui à disposition un "scrapé" une collection de plus de 800 peintures.  noté qu'un des problèmes auquel nous allons faire face et la multiplicité des homothéties (Kakemono, paysage). Comme évoqué dans \cite{}, Les RCNN n'acceptent des images de tailles différents, il faudra donc trouver un moyen de trouver un bon compromis dans le redimensionnement de notre dataset.
+\subsection{Peinture chinoises}
+"La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{wiki:Peinture-chinoise} Il existe beaucoup de styles, courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). Nous prévoyons d'exploiter un dataset de plus de 5000 peintures chinoises au format 256x256, récupérées depuis \cite{ychen93}
 
 
 \chapter{Propositions de solutions}
 
-Voici les solutions envisagées  :
+Malgré nos recherches, nous n'avons à ce jour trouvé aucun modèle nous permettant de réaliser totalement notre projet. Ci-dessous une liste non définitive des nouvelles pistes que nous souhaitons explorer.
 
 \section{Création du dataset en semi automatique}
 
-En utilisant le logiciel LabelBox, il est possible de labeliser une image, en créant des sémantique layout[1]. Nous avons déjà un collection de plsu de 1000 images de peinture chinoises, les labelisés nous prendrait environ 2 jours hommes à raison d'une minute par image. Une fois cette étape réalisée, nous pourrions générer une ou plusieurs abstractions pour chaque peintures, en utilisant le dataset "quick draw" entre autres. Outre l'inconvénien du temps passé, cette solution n'est pas généralisable à autre chose que notre problématique.
+En utilisant le logiciel LabelBox, il est possible de labelliser manuellement une image à travers l'utilisation des sémantiques layout. A titre d'information, labelliser 1000 images prendrait environ 2 jours hommes à raison d'une minute par image. Une fois cette étape réalisée, nous pourrions générer une ou plusieurs abstractions pour chaque peintures, en utilisant le dataset "quick draw" entre autres. Outre l'inconvénient du temps passé, cette solution n'est pas généralisable.
 
 \section{Photo-Sketching: Inferring Contour Drawings from Images}
-
+Todo : Fakhri
 
 \section{Abstraire une image via les CNN}
-Nous savons qu'un CNN est capable de détecter des caractéristiques d'une image
-
-
-Comme le prouve le travail de https://github.com/dribnet/perceptionengines, il est peut-être possible de générer un représentation abstraite en utilisant cette propriété des CNN.
-
+Nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://github.com/dribnet/perceptionengines, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement cGAN type "traduction image-image". 
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
 
