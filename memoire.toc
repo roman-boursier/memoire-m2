@@ -15,8 +15,8 @@
 \contentsline {section}{\numberline {1.4}Datasets disponibles}{10}%
 \contentsline {subsection}{\numberline {1.4.1}Croquis/abstractions}{10}%
 \contentsline {subsection}{\numberline {1.4.2}Peinture chinoises}{10}%
-\contentsline {chapter}{\numberline {2}Propositions de solutions}{11}%
-\contentsline {section}{\numberline {2.1}Création du dataset en semi automatique}{11}%
-\contentsline {section}{\numberline {2.2}Photo-Sketching: Inferring Contour Drawings from Images}{11}%
-\contentsline {section}{\numberline {2.3}Abstraire une image via les RCNN}{11}%
-\contentsline {chapter}{\numberline {3}Conclusion et Perspectives}{13}%
+\contentsline {chapter}{\numberline {2}Propositions de solutions}{12}%
+\contentsline {section}{\numberline {2.1}Création du dataset en semi automatique}{12}%
+\contentsline {section}{\numberline {2.2}Photo-Sketching: Inferring Contour Drawings from Images}{12}%
+\contentsline {section}{\numberline {2.3}Abstraire une image via les RCNN}{12}%
+\contentsline {chapter}{\numberline {3}Conclusion et Perspectives}{14}%

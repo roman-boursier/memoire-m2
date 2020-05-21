@@ -104,7 +104,7 @@ La "traduction image-image" (Image-to-image translation) permet d'apprendre le m
 
 Comme évoqué dans \cite{DBLP:journals/corr/abs-1805-00247} les algorithmes du type "traduction image-image" se basent essentiellement sur la corrélation d'une image à l'autre, et relève d'un apprentissage supervisé. Le rendu en Figure \ref{fig-pix2pix-fail} s'explique par la nature du dataset et par la distance importante qui sépare une abstraction d'une photo. 
 
-En Figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessiner schématiquement un paysage composé de montagnes et d'arbres, éléments courant de la peinture chinoise. Ces dessins sont des abstractions, que nous souhaitons traduire en peintures chinoises.
+En Figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessiner un paysage composé de montagnes et d'arbres, éléments courant de la peinture chinoise. Ces dessins sont des abstractions, que nous souhaitons traduire en peintures chinoises.
 
 \begin{center}
   \centering
@@ -121,7 +121,7 @@ En Figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessin
 
 \chapter{Etat de l'art}
  
-Nous présentons dans un premier temps les GANs qui sont au coeur de notre problématique. En un second lieu, nous étudions différents modèles existants basés sur les GANs conditionnels. Nous évoquons aussi, de manière plus succincte, des travaux liés à notre sujet mais n'utilisant pas les réseaux de neurones afin de pouvoir identifier les avantages et inconvénients des deux mondes. Nous terminons par une liste des datasets utiles à notre sujet.
+Nous présentons dans un premier temps les GANs qui sont au coeur de notre problématique. En un second lieu, nous étudions différents modèles existants basés sur les GANs conditionnels. Nous évoquons aussi, de manière plus succincte, des travaux liés à notre sujet mais n'utilisant pas les réseaux de neurones afin de pouvoir identifier les avantages et inconvénients des deux approches. Nous terminons par une liste des datasets utiles à notre sujet.
 
 
 \section{Généralités sur les GANs}
@@ -143,7 +143,7 @@ Les GANs conditionnels ajoutent une information supplémentaire $y$, partagée p
 \cite{DBLP:journals/corr/GatysEB15a} nous montre en quoi les cGANs peuvent permettre de résoudre efficacement les problèmes de traductions d'images et propose un framework applicable à n'importe quel domaine.
 
 \subsection{GauGan}
-\cite{DBLP:journals/corr/abs-1903-07291} permet de générer des paysages réalistes basés sur des masques de segmentation sémantiques. Les auteurs introduisent la "normalisation conditionnel" ou "adaptative", permettant de prendre en compte notamment les informations spatials.
+\cite{DBLP:journals/corr/abs-1903-07291} permet de générer des paysages réalistes basés sur des masques de segmentation sémantiques. Les auteurs introduisent la "normalisation conditionnel" ou "adaptative", permettant de prendre en compte notamment les informations spatiales.
 Les couches de normalisations ont tendances à faire perdre de l'information contenu dans les masques sémantiques d'entrées car ils ne dépendent pas de données externes.
 
 \begin{center}
@@ -184,7 +184,17 @@ L'architecture est décomposé en 4 sous-modèles contenants chacun leur propres
 \subsection{Sketching: Inferring Contour Drawings from Images}
 \cite{DBLP:journals/corr/abs-1901-00542} propose une nouvelle approche concernant la détection des contours dans une image. L'article montre que les solutions traditionnelles comme Canny \cite{4767851} , captent uniquement les signaux de haute fréquence dans l’image sans la comprendre. Les auteurs ont collecté un dataset de 5000 pairs "croquis humain/photos", crée manuellement via la plateforme de crowdsourcing "Amazon Mechanical Turk". En effet aucun dataset existant ne convenait (nombre d'éléments dans l'image, limites internes manquantes, le contenu non reconnaissable, les zones ombrées vides etc ..).
 
-Ce modèle également du type "traduction image-image", permet d'avoir plusieurs labels différents pour la même photo, prenant en compte la nature subjective du dessin humain.
+Ce modèle également du type "traduction image-image", permet d'avoir plusieurs labels différents pour la même photo, donc plusieurs interprétations différentes.
+
+\begin{center}
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[height=0.15\textheight]{images/sketching-input.jpg}&
+    \includegraphics[height=0.15\textheight]{images/sketchy2.png}\\
+    (a) Input &(b) Output
+  \end{tabular}
+  \captionof{figure}{Test du modèle pré-entraîné sur une photo de paysage\label{fig-gaugan}}
+\end{center}
 
 \section{Autre algorithmes n'utilisant pas le deep learning}
 TODO
@@ -197,7 +207,7 @@ Il est évident qu'il n'existe pas à l'heure actuel de dataset de paires abstra
 Un des principal problème de la recherche dans le domaine de la génération de dessins à la main est le manque de dataset. Aujourd'hui les plus grosses bases de données que nous avons trouvées sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. A noter que tous ces datasets sont constitués d'objets "isolés" et non composés comme peut l'être une peinture chinoise.
 
 \subsection{Peinture chinoises}
-"La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{wiki:Peinture-chinoise} Il existe beaucoup de styles, courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). Nous prévoyons d'exploiter un dataset de plus de 5000 peintures chinoises au format 256x256, récupérées depuis \cite{ychen93}
+"La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{wiki:Peinture-chinoise} Il existe par ailleurs beaucoup de styles, courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). Nous prévoyons d'exploiter un dataset de plus de 5000 peintures chinoises au format 256x256, récupérées depuis \cite{ychen93}
 
 
 \chapter{Propositions de solutions}
