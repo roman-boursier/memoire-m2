@@ -19,7 +19,7 @@
 \contentsline {chapter}{\numberline {2}Proposition de solution}{12}%
 \contentsline {section}{\numberline {2.1}Datasets}{12}%
 \contentsline {section}{\numberline {2.2}Modèle}{12}%
-\contentsline {section}{\numberline {2.3}Abstraction vers dessins}{12}%
-\contentsline {section}{\numberline {2.4}Dessins vers peinture}{12}%
-\contentsline {chapter}{\numberline {3}Résultats}{13}%
-\contentsline {chapter}{\numberline {4}Conclusion et Perspectives}{14}%
+\contentsline {section}{\numberline {2.3}Abstraction vers Photo}{12}%
+\contentsline {section}{\numberline {2.4}Photo vers peinture}{12}%
+\contentsline {chapter}{\numberline {3}Résultats}{14}%
+\contentsline {chapter}{\numberline {4}Conclusion et Perspectives}{15}%

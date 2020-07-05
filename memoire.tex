@@ -207,7 +207,7 @@ TODO
 
 
 \section{Datasets disponibles}
-Il est évident qu'il n'existe pas à l'heure actuel de dataset de paires abstraction/peinture chinoise.
+Durant nos recherches, nous n'avons pu trouver de dataset correspondant à nos besoins, c'est-à-dire un dataset abstraction/peinture chinoise. Cependant, nous avons pu trouver lors de notre recherche d'autres dataset qui y ressemblent.
 
 \subsection{Croquis/abstractions}
 Un des principal problème de la recherche dans le domaine de la génération de dessins à la main est le manque de dataset. Aujourd'hui les plus grosses bases de données que nous avons trouvées sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. A noter que tous ces datasets sont constitués d'objets "isolés" et non composés comme peut l'être une peinture chinoise.
@@ -217,12 +217,10 @@ Un des principal problème de la recherche dans le domaine de la génération de
 
 
 \chapter{Proposition de solution}
+Malgré nos recherches, nous n'avons à ce jour trouvé aucun modèle correspondant à nôtre besoin. 
 
-Malgré nos recherches, nous n'avons à ce jour trouvé aucun modèle nous permettant de réaliser totalement notre projet.
-
-
-Notre objectif est donc de reconstruire une image crédible à partir d'une abstraction.
-Notre idée est de décomposé le processus d'apprentissage en plusieurs étapes, car comme vu la distance entre une abstraction et une peinture chinoise est trop grande. 
+Notre objectif est donc de générér une peinture chinoise respectant le plus possible l'abastraction donné en entrée.%reconstruire une image crédible à partir d'une abstraction.
+Afin de palier le manque de dataset, notre idée fut de décomposer le processus d'apprentissage en plusieurs étapes, d'abord de l'abstraction à la photo puis ensuite à la peinture chinoise. %car comme vu la distance entre une abstraction et une peinture chinoise est trop grande. 
 
 \section{Datasets}
 - Peintures chinoise
@@ -233,16 +231,39 @@ Notre idée est de décomposé le processus d'apprentissage en plusieurs étapes
 \section{Modèle}
 - Pix2pix + Cyclegan
 
-\section{Abstraction vers dessins}
+\section{Abstraction vers Photo}
 - Fait main -> paysage réaliste
 - HED
 - Ramer–Douglas–Peucker algorithm
 
-\section{Dessins vers peinture}
+\section{Photo vers peinture}
+Afin de réaliser la peinture chinoise à partir de la photo, nous avons pensé directement au cyclegan. Lors de nos recherches, nous avons pu constater des exemples de cyclegan générant des peintures du style monet à partir d'une photo. \\
+Cependant, nos photos sont en noir et blanc étant donné que le pix2pix a donné un plus mauvais résultat avec avec des images en couleurs qu'en noir et blanc (voir figure \ref{color-vs-gray}).% et estimons que les résultats ne seront pas très probant. %En effet, étant en noir et blanc le cyclegan n'aura aucun repère pour détecter où mettre, par exemple, la couleur verte qui est généralement appliqué à la végétation.
 
+\begin{figure}[!h]
+\centering 
+\begin{minipage}{0.25\textwidth}
+\centering
+\includegraphics[scale=0.3]{images/croquis_2_real_A.png}
+\\Entrée donné au pix2pix
+\\
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+\centering
+\includegraphics[scale=0.3]{images/croquis_2_fake_B.png}
+\\Résultat en couleur
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+\centering
+\includegraphics[scale=0.3]{images/croquis_2_fake_B-gray.png}
+\\Résultat en noir et blanc
+\end{minipage}
+\caption{\centering Résultat pix2pix entraîné avec des photos en couleurs et en noir et blanc.}
+\label{color-vs-gray}
+\end{figure}
 
 \chapter{Résultats}
-- Graphique temps d'apprentissages / exécutions
+- Graphique temps d'apprentissages / exécutions\\
 - Plot d'images
 
 
