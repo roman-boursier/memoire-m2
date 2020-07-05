@@ -69,4 +69,11 @@ ychen93.
 \newblock The gan zoo.
 \newblock \url{https://github.com/ychen93/Chinese-Painting-Dataset}, 2018.
 
+\bibitem[ZPIE17]{CycleGAN2017}
+Jun-Yan Zhu, Taesung Park, Phillip Isola, and Alexei~A Efros.
+\newblock Unpaired image-to-image translation using cycle-consistent
+  adversarial networks.
+\newblock In {\em Computer Vision (ICCV), 2017 IEEE International Conference
+  on}, 2017.
+
 \end{thebibliography}

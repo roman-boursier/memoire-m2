@@ -156,7 +156,12 @@ Les couches de normalisations ont tendances à faire perdre de l'information con
   \captionof{figure}{Test de rendu de paysage à partir de l'application Gaugan : http://nvidia-research-mingyuliu.com/gaugan/\label{fig-gaugan}}
 \end{center}
 
+\subsection{CycleGan}
+CycleGan \cite{CycleGAN2017}, présente une approche pour la traduction d'une image d'un domaine source vers un domaine cible lorsque le dataset n'est pas apparié. \\
 
+Le modèle possède deux générateurs $G:X\to Y$ et un second $F:Y\to X$ ainsi que deux discriminateurs $D_Y$ and $D_X$
+
+Les auteurs nous explique que si nous pouvons passer du domaine $X$ vers le domaine $Y$ et vice versa, alors le résultat final devrait être identique à l'entrée initiale $X$
 
 \subsection{Transfert de style neuronal} 
 Introduit par Leon A. Gatys \cite{DBLP:journals/corr/GatysEB15a} le TDN consiste à transférer un style à partir d'une image de référence vers une image de contenu. L'objectif est de transformer l'image d'entrée (bruit) en minimisant la distance avec l'image de contenu et avec l'image de style. On obtient alors par rétropagation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
@@ -196,6 +201,7 @@ Ce modèle également du type "traduction image-image", permet d'avoir plusieurs
   \captionof{figure}{Test du modèle pré-entraîné sur une photo de paysage\label{fig-gaugan}}
 \end{center}
 
+
 \section{Autre algorithmes n'utilisant pas le deep learning}
 TODO
 
@@ -210,21 +216,44 @@ Un des principal problème de la recherche dans le domaine de la génération de
 "La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{wiki:Peinture-chinoise} Il existe par ailleurs beaucoup de styles, courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). Nous prévoyons d'exploiter un dataset de plus de 5000 peintures chinoises au format 256x256, récupérées depuis \cite{ychen93}
 
 
-\chapter{Propositions de solutions}
+\chapter{Proposition de solution}
 
-Malgré nos recherches, nous n'avons à ce jour trouvé aucun modèle nous permettant de réaliser totalement notre projet. Ci-dessous une liste non définitive des nouvelles pistes que nous souhaitons explorer.
+Malgré nos recherches, nous n'avons à ce jour trouvé aucun modèle nous permettant de réaliser totalement notre projet.
 
-\section{Création du dataset en semi automatique}
 
-En utilisant le logiciel LabelBox, il est possible de labelliser manuellement une image à travers l'utilisation des sémantiques layout. A titre d'information, labelliser 1000 images prendrait environ 2 jours hommes à raison d'une minute par image. Une fois cette étape réalisée, nous pourrions générer une ou plusieurs abstractions pour chaque peintures, en utilisant le dataset "quick draw" entre autres. Outre l'inconvénient du temps passé, cette solution n'est pas généralisable.
+Notre objectif est donc de reconstruire une image crédible à partir d'une abstraction.
+Notre idée est de décomposé le processus d'apprentissage en plusieurs étapes, car comme vu la distance entre une abstraction et une peinture chinoise est trop grande. 
 
-\section{Photo-Sketching: Inferring Contour Drawings from Images}
-Todo : Fakhri
+\section{Datasets}
+- Peintures chinoise
+- Paysages réaliste
+- Abstraction "fait main"
+- Segmentation map + quick draw
 
-\section{Abstraire une image via les RCNN}
-Nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://medium.com/artists-and-machine-intelligence/perception-engines-8a46bc598d57, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement d'un cGAN type "traduction image-image". 
+\section{Modèle}
+- Pix2pix + Cyclegan
+
+\section{Abstraction vers dessins}
+- Fait main -> paysage réaliste
+- HED
+- Ramer–Douglas–Peucker algorithm
+
+\section{Dessins vers peinture}
+
+
+\chapter{Résultats}
+- Graphique temps d'apprentissages / exécutions
+- Plot d'images
+
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
+
+Comme nous l'avons évoqué dans la section état de l'art, il est possible d'appliquer efficacement un style donnée à une image, mais pour que le rendu soit crédible, il faut que l'entrée provienne d'une image réaliste. Notre principale difficulté était donc de transformer une abstraction en dessins réaliste. Les résultats présentés montrent que des modèles comme pix2pix permettent de réaliser ce transfert à condition d'avoir un dataset spécialisée (paysage)et appairé. Ainsi plus y a de variation et de disparité dans le dataset, moins la prédiction sera convaincante.
+
+Par ailleurs, nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://medium.com/artists-and-machine-intelligence/perception-engines-8a46bc598d57, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement d'un cGAN type "traduction image-image". 
+
+Les résultats pourraient être améliorer en augmentant le nombre d'élements dans le dataset ainsi que le nombre d'epochs.
+
 
 \bibliographystyle{alpha}
 \bibliography{memoire}
