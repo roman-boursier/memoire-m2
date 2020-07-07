@@ -47,15 +47,7 @@ Jifei Song, Kaiyue Pang, Yi{-}Zhe Song, Tao Xiang, and Timothy~M. Hospedales.
 \newblock Learning to sketch with shortcut cycle consistency.
 \newblock {\em CoRR}, abs/1805.00247, 2018.
 
-\bibitem[Wik20a]{wiki:Peinture-chinoise}
-Wikipedia.
-\newblock {Peinture chinoise} --- {W}ikipedia{,} the free encyclopedia.
-\newblock
-  \url{http://fr.wikipedia.org/w/index.php?title=Peinture\%20chinoise&oldid=167921234},
-  2020.
-\newblock [Online; accessed 17-May-2020].
-
-\bibitem[Wik20b]{wiki:Reseaux-antagonistes-generatifs}
+\bibitem[Wik20]{wiki:Reseaux-antagonistes-generatifs}
 Wikipedia.
 \newblock {Réseaux antagonistes génératifs} --- {W}ikipedia{,} the free
   encyclopedia.

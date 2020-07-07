@@ -202,43 +202,52 @@ Ce modèle également du type "traduction image-image", permet d'avoir plusieurs
 \end{center}
 
 
-\section{Autre algorithmes n'utilisant pas le deep learning}
-TODO
-
-
-\section{Datasets disponibles}
-Durant nos recherches, nous n'avons pu trouver de dataset correspondant à nos besoins, c'est-à-dire un dataset abstraction/peinture chinoise. Cependant, nous avons pu trouver lors de notre recherche d'autres dataset qui y ressemblent.
-
-\subsection{Croquis/abstractions}
-Un des principal problème de la recherche dans le domaine de la génération de dessins à la main est le manque de dataset. Aujourd'hui les plus grosses bases de données que nous avons trouvées sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. A noter que tous ces datasets sont constitués d'objets "isolés" et non composés comme peut l'être une peinture chinoise.
-
-\subsection{Peinture chinoises}
-"La peinture chinoise désigne toute forme de peinture originaire de Chine ou pratiquée en Chine ou par des artistes chinois hors de Chine." \cite{wiki:Peinture-chinoise} Il existe par ailleurs beaucoup de styles, courants et genres différentes (paysage, peinture narratives, faunes, flore, personnage). Nous prévoyons d'exploiter un dataset de plus de 5000 peintures chinoises au format 256x256, récupérées depuis \cite{ychen93}
 
 
 \chapter{Proposition de solution}
-Malgré nos recherches, nous n'avons à ce jour trouvé aucun modèle correspondant à nôtre besoin. 
 
-Notre objectif est donc de générér une peinture chinoise respectant le plus possible l'abastraction donné en entrée.%reconstruire une image crédible à partir d'une abstraction.
-Afin de palier le manque de dataset, notre idée fut de décomposer le processus d'apprentissage en plusieurs étapes, d'abord de l'abstraction à la photo puis ensuite à la peinture chinoise. %car comme vu la distance entre une abstraction et une peinture chinoise est trop grande. 
+
 
 \section{Datasets}
-- Peintures chinoise
-- Paysages réaliste
-- Abstraction "fait main"
-- Segmentation map + quick draw
+
+Malgrès nos recherches, nous n'avons pas pu trouver de dataset correspondant exactement à nos besoins, c'est-à-dire des paires d'abstraction/peinture chinoise.Pour les croquis, les plus grosse bases existantes sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. Après plusieurs essais, nous avons décidé d'abandonner leur utilisations car il s'agit le plus souvent d'objets isolés et non appairés à une image réaliste. Pour la peinture chinoise, nous avons récupérer un premier dataset de 5000 images (\cite{ychen93}) et scrappé des plateformes comme google/baidu et pinterest. 
+
+
+Au final notre dataset est composé de 624 peinture de paysage chinois, répartis en 90/10, nous l'avons réduis essentiellement pour des raisons de temps et d'apprentissage trop long. Chaque images sera par suite redimensionnées et recadrées au format 256x256.
+
 
 \section{Modèle}
-- Pix2pix + Cyclegan
+Nous proposons de diviser l'apprentissage en deux étapes. La première consiste à traduire un croquis en dessin détaillé et la seconde d'un dessin détaillé vers la peinture. Notre proposition se base sur deux cGan de type "image-image", entraîné sur deux datasets appairées.
 
-\section{Abstraction vers Photo}
-- Fait main -> paysage réaliste
-- HED
-- Ramer–Douglas–Peucker algorithm
 
-\section{Photo vers peinture}
+L'implémentation utilise le framework Keras et se base sur l'architecture pix2pix[].
+
+\begin{center}
+  \centering
+    \includegraphics[width=0.8\linewidth]{images/pix2pix.jpg}
+  \captionof{figure}{Pix2pix \ref{fig-gaugan}\label{fig-transfert-de-style}(b)}
+\end{center}
+
+
+
+
+\section{Abstraction vers dessin}
+
+Après plusieurs expérience décevantes, nous avons choisi d'utiliser un algorithme de détection de bord nommé "holistically-nested edge detection" (HED) pour traduire nos peinture en dessins détaillées. Cette solution basée sur un modèle d'apprentissage profond permet de résoudre l’ambiguïté lié à la détection des contours et des objets.
+
+A partir de cette sortie notre but est d'extraire le maximum d’éléments de l'image en ne gardant que les caractéristiques les plus représentatives. Nous avons testé plusieurs méthodes.
+
+[Todo inclure les tests]
+
+Après essais sur le modèle d'apprentissage, il s'avère que la labellisation manuelle reste dans notre cas la plus satisfaisante.
+
+Nous pensons néanmoins que deux méthodes auraient méritées d'être approfondies, celle la segmentation ainsi que l’algorithme de Ramer–Douglas–Peucker. Dans les deux cas, l'avantage majeur est d'épargner la labellisation manuelle.
+
+
+\section{Dessin vers peinture}
 Afin de réaliser la peinture chinoise à partir de la photo, nous avons pensé directement au cyclegan. Lors de nos recherches, nous avons pu constater des exemples de cyclegan générant des peintures du style monet à partir d'une photo. \\
 Cependant, nos photos sont en noir et blanc étant donné que le pix2pix a donné un plus mauvais résultat avec avec des images en couleurs qu'en noir et blanc (voir figure \ref{color-vs-gray}).% et estimons que les résultats ne seront pas très probant. %En effet, étant en noir et blanc le cyclegan n'aura aucun repère pour détecter où mettre, par exemple, la couleur verte qui est généralement appliqué à la végétation.
+
 
 \begin{figure}[!h]
 \centering 
@@ -262,10 +271,11 @@ Cependant, nos photos sont en noir et blanc étant donné que le pix2pix a donn�
 \label{color-vs-gray}
 \end{figure}
 
-\chapter{Résultats}
-- Graphique temps d'apprentissages / exécutions\\
-- Plot d'images
 
+
+\chapter{Résultats}
+- Graphique temps d'apprentissages (CPU collab/pc perso) / exécutions\\
+- Plot d'images
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
 
