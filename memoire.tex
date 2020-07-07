@@ -82,13 +82,13 @@ Idem ...
 \addcontentsline{toc}{chapter}{Introduction}
 
 
-Dans le cadre de notre projet de fin d'étude, nous souhaitons utiliser un modèle de Deep Learning, afin de produire un moteur de rendu capable d’adopter une stylisation « type » telle que la peinture chinoise. Dans un premier temps, il s’agira de proposer un modèle d’abstraction des peintures sélectionnées comme base d’apprentissage et d’utiliser le couple « peinture originale » / « abstraction » pour l’entraînement. Par la suite, un moteur de rendu d’abstractions sera connecté au réseau profond qui produira une peinture sur la base de l’abstraction.
+Dans le cadre de notre projet de fin d'études, nous souhaitons utiliser un modèle de Deep Learning, afin de produire un moteur de rendu capable d’adopter une stylisation « type » tel que la peinture chinoise. Dans un premier temps, il s’agira de proposer un modèle d’abstraction des peintures sélectionnées comme base d’apprentissage et d’utiliser le couple « peinture originale » / « abstraction » pour l’entraînement. Par la suite, un moteur de rendu d’abstractions sera connecté au réseau profond qui produira une peinture sur la base de l’abstraction.
 
 Le modèle généré devra d'une part adopter la stylisation retenue mais aussi interpréter l'abstraction d'origine.
 
 \section{Problématique}
 
-La "traduction image-image" (Image-to-image translation) permet d'apprendre le mapping entre une image d'entrée et de sortie. En Figure \ref{fig-pix2pix}, nous testons la génération d'un paysage à partir d'un croquis simple. En Figure \ref{fig-pix2pix-fail}, c'est un échec.
+La "traduction image-image" (Image-to-image translation) permet d'apprendre le mapping entre une image d'entrée et de sortie. En figure \ref{fig-pix2pix}, nous testons la génération d'un paysage à partir d'un croquis simple. En figure \ref{fig-pix2pix-fail}, c'est un échec.
 
 \begin{center}
 \includegraphics[width=0.7\linewidth]{images/pix2pix-t1.png}
@@ -102,9 +102,9 @@ La "traduction image-image" (Image-to-image translation) permet d'apprendre le m
 \label{fig-pix2pix-fail}
 \end{center}
 
-Comme évoqué dans \cite{DBLP:journals/corr/abs-1805-00247} les algorithmes du type "traduction image-image" se basent essentiellement sur la corrélation d'une image à l'autre, et relève d'un apprentissage supervisé. Le rendu en Figure \ref{fig-pix2pix-fail} s'explique par la nature du dataset et par la distance importante qui sépare une abstraction d'une photo. 
+Comme évoqué dans \cite{DBLP:journals/corr/abs-1805-00247} les algorithmes du type "traduction image-image" se basent essentiellement sur la corrélation d'une image à l'autre, et relève d'un apprentissage supervisé. Le rendu en figure \ref{fig-pix2pix-fail} s'explique par la nature du dataset et par la distance importante qui sépare une abstraction d'une photo. 
 
-En Figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessiner un paysage composé de montagnes et d'arbres, éléments courant de la peinture chinoise. Ces dessins sont des abstractions, que nous souhaitons traduire en peintures chinoises.
+En figure \ref{fig-croquis} nous avons demandé à plusieurs personnes de dessiner un paysage composé de montagnes et d'arbres, éléments courants de la peinture chinoise. Ces dessins sont des abstractions, que nous souhaitons traduire en peintures chinoises.
 
 \begin{center}
   \centering
@@ -128,11 +128,11 @@ Nous présentons dans un premier temps les GANs qui sont au coeur de notre probl
 
 "Les GANs (en anglais generative adversarial networks) sont une classe d'algorithmes d'apprentissage non-supervisé. Ces algorithmes ont été introduits dès 2014 par Goodfellow et permettent de générer des images avec un fort degré de réalisme." \cite{wiki:Reseaux-antagonistes-generatifs}
 
-Un générateur fabrique des données et les soumets au discriminateur dont le but est d'évaluer leurs degré de crédibilité. 
+Un générateur fabrique des données et les soumet au discriminateur dont le but est d'évaluer leurs degrés de crédibilité. 
 
 Le générateur $G(z, \theta_{1})$ représente un réseau de neurones capable de mapper du bruit $z$ vers l'espace désiré $x$. Le discriminateur $D(z, \theta_{2})$ retourne la probabilité dans l'intervalle $[0,1]$ que $x$ vient du dataset original. $\theta_{i}$ représente les poids définis par chacun des modèles. Le générateur tente de maximiser la probabilité que les données $x$, soient classifiées comme appartenant au dataset d'origine et inversement, le discriminateur minimise la probabilité que de fausses images appartiennent au dataset d'origine.
 
-Il existe aujourd'hui une très grande variété de travaux de recherches basés les GANs (BCGAN, AmbientGAN, ORGAN, Perceptual GAN). Le dépôt "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de GANs différents !
+Il existe aujourd'hui une très grande variété de travaux de recherche basés sur les GANs (BCGAN, AmbientGAN, ORGAN, Perceptual GAN). Le dépôt "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de GANs différents !
 
 
 \section{CGANs et traduction d'image}
@@ -144,7 +144,7 @@ Les GANs conditionnels ajoutent une information supplémentaire $y$, partagée p
 
 \subsection{GauGan}
 \cite{DBLP:journals/corr/abs-1903-07291} permet de générer des paysages réalistes basés sur des masques de segmentation sémantiques. Les auteurs introduisent la "normalisation conditionnel" ou "adaptative", permettant de prendre en compte notamment les informations spatiales.
-Les couches de normalisations ont tendances à faire perdre de l'information contenu dans les masques sémantiques d'entrées car ils ne dépendent pas de données externes.
+Les couches de normalisations ont tendance à faire perdre de l'information contenu dans les masques sémantiques d'entrées car ils ne dépendent pas de données externes.
 
 \begin{center}
   \centering
@@ -161,12 +161,12 @@ CycleGan \cite{CycleGAN2017}, présente une approche pour la traduction d'une im
 
 Le modèle possède deux générateurs $G:X\to Y$ et un second $F:Y\to X$ ainsi que deux discriminateurs $D_Y$ and $D_X$
 
-Les auteurs nous explique que si nous pouvons passer du domaine $X$ vers le domaine $Y$ et vice versa, alors le résultat final devrait être identique à l'entrée initiale $X$
+Les auteurs nous expliquent que si nous pouvons passer du domaine $X$ vers le domaine $Y$ et vice-versa, alors le résultat final devrait être identique à l'entrée initiale $X$.
 
 \subsection{Transfert de style neuronal} 
-Introduit par Leon A. Gatys \cite{DBLP:journals/corr/GatysEB15a} le TDN consiste à transférer un style à partir d'une image de référence vers une image de contenu. L'objectif est de transformer l'image d'entrée (bruit) en minimisant la distance avec l'image de contenu et avec l'image de style. On obtient alors par rétropagation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
+Introduit par Leon A. Gatys \cite{DBLP:journals/corr/GatysEB15a} le TDN consiste à transférer un style à partir d'une image de référence vers une image de contenu. L'objectif est de transformer l'image d'entrée (bruit) en minimisant la distance avec l'image de contenu et avec l'image de style. On obtient alors par rétropropagation, une image qui correspond au contenu de l'image d'origine et au style souhaitée.
 
-L'avantage de cette technique est quelle ne nécessite pas de dataset, seulement deux images sont nécessaires.
+L'avantage de cette technique est qu'elle ne nécessite pas de dataset, seules deux images sont nécessaires.
 
 \begin{center}
   \centering
@@ -181,9 +181,9 @@ L'avantage de cette technique est quelle ne nécessite pas de dataset, seulement
 
 
 \subsection{Learning to Sketch} 
-\cite{DBLP:journals/corr/abs-1805-00247} présente une méthode permettant de transformer une photo en croquis, en essayant d'imiter la façon de faire d'un humain. Le modèle est capable de réaliser le croquis séquentiellement, c'est à dire trait par trait. Les auteurs proposent de résoudre le problème des styles subjectifs et variés des dessins humain en utilisant un modèle hybride supervisé/non-supervisé. L'objectif étant de palier "au signal de supervision faible et bruyant" induit par l'écart important entre un croquis et sa photo correspondante. \\
+\cite{DBLP:journals/corr/abs-1805-00247} présente une méthode permettant de transformer une photo en croquis, en essayant d'imiter la façon de faire d'un humain. Le modèle est capable de réaliser le croquis séquentiellement, c'est-à-dire trait par trait. Les auteurs proposent de résoudre le problème des styles subjectifs et variés des dessins fait à la main en utilisant un modèle hybride supervisé/non-supervisé. L'objectif étant de palier "au signal de supervision faible et bruyante" induit par l'écart important entre un croquis et sa photo correspondante. \\
 
-L'architecture est décomposé en 4 sous-modèles contenants chacun leur propres sous-réseaux d'encodeurs et de décodeurs. Deux réseaux supervisés traduisent respectivement une photo en croquis $D(E(photo))\to sketch$ et un croquis en photo $(D(E(sketch))\to photo)$ . Deux autres réseaux non-supervisés se chargent de la reconstruction. $D(E(photo))\to photo$ et $D(E(sketch))\to sketch$  \\
+L'architecture est décomposé en 4 sous-modèles contenants chacun leurs propres sous-réseaux d'encodeurs et de décodeurs. Deux réseaux supervisés traduisent respectivement une photo en croquis $D(E(photo))\to sketch$ et un croquis en photo $(D(E(sketch))\to photo)$ . Deux autres réseaux non-supervisés se chargent de la reconstruction. $D(E(photo))\to photo$ et $D(E(sketch))\to sketch$  \\
 
 
 \subsection{Sketching: Inferring Contour Drawings from Images}
@@ -210,10 +210,10 @@ Ce modèle également du type "traduction image-image", permet d'avoir plusieurs
 
 \section{Datasets}
 
-Malgrès nos recherches, nous n'avons pas pu trouver de dataset correspondant exactement à nos besoins, c'est-à-dire des paires d'abstraction/peinture chinoise.Pour les croquis, les plus grosse bases existantes sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. Après plusieurs essais, nous avons décidé d'abandonner leur utilisations car il s'agit le plus souvent d'objets isolés et non appairés à une image réaliste. Pour la peinture chinoise, nous avons récupérer un premier dataset de 5000 images (\cite{ychen93}) et scrappé des plateformes comme google/baidu et pinterest. 
+Malgrè nos recherches, nous n'avons pas pu trouver de dataset correspondant exactement à nos besoins, c'est-à-dire des paires d'abstraction/peinture chinoise.Pour les croquis, les plus grosses bases existantes sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. Après plusieurs essais, nous avons décidé d'abandonner leurs utilisations car il s'agit le plus souvent d'objets isolés et non appairés à une image réaliste. Pour la peinture chinoise, nous avons récupéré un premier dataset de 5000 images (\cite{ychen93}) et scrappés des plateformes comme google/baidu et pinterest. 
 
 
-Au final notre dataset est composé de 624 peinture de paysage chinois, répartis en 90/10, nous l'avons réduis essentiellement pour des raisons de temps et d'apprentissage trop long. Chaque images sera par suite redimensionnées et recadrées au format 256x256.
+Au final notre dataset est composé de 624 peintures de paysage chinoises réparties en 90/10 (90\% des images destinées à l'entraînement et 10\% pour les tests). Nous les avons ensuite réduites essentiellement pour des raisons de temps et d'apprentissage trop long. Chaque image sera par la suite redimensionnée et recadrée au format 256x256.
 
 
 \section{Modèle}
@@ -231,59 +231,119 @@ L'implémentation utilise le framework Keras et se base sur l'architecture pix2p
 
 
 
-\section{Abstraction vers dessin}
+\section{Abstraction vers photo}
+Au départ, nous avosn réalisé directement un pix2pix sur le dataset croquis/photos. Cependant, nous avons remarqué que les résultats n'étaient pas celles qu'on espéraient (voir figure \ref{pix2pix-color}). Pour un dessin fait main nous pouvons constater que le résultat est un peu brouillon tandis qu'avec une image en entrée où le filtre Canny est appliqué le résultat est plus satisfaisant (voir figure \ref{pix2pix-canny-color})
 
-Après plusieurs expérience décevantes, nous avons choisi d'utiliser un algorithme de détection de bord nommé "holistically-nested edge detection" (HED) pour traduire nos peinture en dessins détaillées. Cette solution basée sur un modèle d'apprentissage profond permet de résoudre l’ambiguïté lié à la détection des contours et des objets.
+\begin{figure}[!h]
+\centering 
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[scale=0.5]{images/croquis_2_real_A.png}
+\\Croquis
+\\
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[scale=0.5]{images/croquis_2_fake_B.png}
+\\Résultat en couleur
+\end{minipage}
+\caption{\centering Résultat pix2pix croquis en entrée.}
+\label{pix2pix-color}
+\end{figure}
+
+\begin{figure}[!h]
+\centering 
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[scale=0.5]{images/roro-1_real_A.png}
+\\Image avec filtre Canny
+\\
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[scale=0.5]{images/roro-1_fake_B.png}
+\\Résultat en couleur
+\end{minipage}
+\caption{\centering Résultat pix2pix avec image Canny en entrée.}
+\label{pix2pix-canny-color}
+\end{figure}
+\newpage
+C'est pour cette raison, qu'après plusieurs expériences décevantes, nous avons choisi d'utiliser un algorithme de détection de bord nommé "holistically-nested edge detection" (HED) pour traduire nos peintures en dessins détaillées. Cette solution basée sur un modèle d'apprentissage profond permet de résoudre l’ambiguïté liée à la détection des contours et des objets.
 
 A partir de cette sortie notre but est d'extraire le maximum d’éléments de l'image en ne gardant que les caractéristiques les plus représentatives. Nous avons testé plusieurs méthodes.
 
 [Todo inclure les tests]
 
-Après essais sur le modèle d'apprentissage, il s'avère que la labellisation manuelle reste dans notre cas la plus satisfaisante.
+Après essais sur le modèle d'apprentissage, il s'avère que la labellisation manuelle reste dans notre cas le plus satisfaisant.
 
-Nous pensons néanmoins que deux méthodes auraient méritées d'être approfondies, celle la segmentation ainsi que l’algorithme de Ramer–Douglas–Peucker. Dans les deux cas, l'avantage majeur est d'épargner la labellisation manuelle.
+Nous pensons néanmoins que deux méthodes auraient mérité d'être approfondies, celle la segmentation ainsi que l’algorithme de Ramer–Douglas–Peucker. Dans les deux cas, l'avantage majeur est d'épargner la labellisation manuelle.
 
 
-\section{Dessin vers peinture}
-Afin de réaliser la peinture chinoise à partir de la photo, nous avons pensé directement au cyclegan. Lors de nos recherches, nous avons pu constater des exemples de cyclegan générant des peintures du style monet à partir d'une photo. \\
-Cependant, nos photos sont en noir et blanc étant donné que le pix2pix a donné un plus mauvais résultat avec avec des images en couleurs qu'en noir et blanc (voir figure \ref{color-vs-gray}).% et estimons que les résultats ne seront pas très probant. %En effet, étant en noir et blanc le cyclegan n'aura aucun repère pour détecter où mettre, par exemple, la couleur verte qui est généralement appliqué à la végétation.
+\section{Photo vers peinture}
+Afin de réaliser la peinture chinoise à partir de la photo, nous avons pensé directement au cyclegan. Lors de nos recherches, nous avons pu constater des exemples de cyclegan générant des peintures de style monet à partir d'une photo. \\
+N'ayant pas de photos de paysage qui ressemblent aux paysage dans les peintures chinoises, nous avons tout de même réussi à appliquer le style propre aux peintures chinoise sur ces photos.\\
+De plus, pour plus de rapidité nous avons réduit le nombre de dataset donc il est probable que ça a eu un impact sur le résultat. Aussi, en raison de la durée limitée sur google colab l'entraînement n'a pas pu être fini (voir les figures ci-dessous pour les résultats). 
 
 
 \begin{figure}[!h]
 \centering 
-\begin{minipage}{0.25\textwidth}
+\begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[scale=0.3]{images/croquis_2_real_A.png}
-\\Entrée donné au pix2pix
+\includegraphics[scale=0.5]{images/cyclegan_real_A.png}
+\\Photo donné au cyclegan
 \\
 \end{minipage}
-\begin{minipage}{0.25\textwidth}
+\begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[scale=0.3]{images/croquis_2_fake_B.png}
-\\Résultat en couleur
+\includegraphics[scale=0.5]{images/cyclegan_fake_B.png}
+\\Photo avec peinture chinoise appliquée
 \end{minipage}
-\begin{minipage}{0.25\textwidth}
+\caption{\centering Résultat cyclegan de la photo à la peinture chinoise.}
+\label{cyclegan-result}
+\end{figure}
+
+\begin{figure}[!h]
+\centering 
+\begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[scale=0.3]{images/croquis_2_fake_B-gray.png}
-\\Résultat en noir et blanc
+\includegraphics[scale=0.5]{images/cyclegan_real_A-2.png}
+\\Photo donné au cyclegan
+\\
 \end{minipage}
-\caption{\centering Résultat pix2pix entraîné avec des photos en couleurs et en noir et blanc.}
-\label{color-vs-gray}
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[scale=0.5]{images/cyclegan_fake_B-2.png}
+\\Photo avec peinture chinoise appliquée
+\end{minipage}
+\caption{\centering Résultat cyclegan de la photo à la peinture chinoise.}
+\label{cyclegan-result-fail}
 \end{figure}
 
 
+Comme on peut le constater, malgré le modèle non fini, à la figure \ref{cyclegan-result} le résultat est assez réussi. Cepedant on peux remarquer que dans la figure \ref{cyclegan-result-fail} les même couches de peintures sont appliqué mais qui donne un résultat peu convaincant. \\
+Ce résultat est probablement dû au fait que l'entraînement n'est pas fini (ça s'est arrêté à la 45ème epoch sur 200).
 
 \chapter{Résultats}
 - Graphique temps d'apprentissages (CPU collab/pc perso) / exécutions\\
 - Plot d'images
 
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{images/plot-pix2pix.png}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{images/plot-cyclegan.png}
+\end{figure}
+
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
 
-Comme nous l'avons évoqué dans la section état de l'art, il est possible d'appliquer efficacement un style donnée à une image, mais pour que le rendu soit crédible, il faut que l'entrée provienne d'une image réaliste. Notre principale difficulté était donc de transformer une abstraction en dessins réaliste. Les résultats présentés montrent que des modèles comme pix2pix permettent de réaliser ce transfert à condition d'avoir un dataset spécialisée (paysage)et appairé. Ainsi plus y a de variation et de disparité dans le dataset, moins la prédiction sera convaincante.
+Comme nous l'avons évoqué dans la section état de l'art, il est possible d'appliquer efficacement un style donné à une image, mais pour que le rendu soit crédible, il faut que l'entrée provienne d'une image réaliste. Notre principale difficulté était donc de transformer une abstraction en dessins réaliste. Les résultats présentés montrent que des modèles comme pix2pix permettent de réaliser ce transfert à condition d'avoir un dataset spécialisé (paysage)et appairé. Ainsi plus y a de variation et de disparité dans le dataset, moins la prédiction sera convaincante.
 
-Par ailleurs, nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://medium.com/artists-and-machine-intelligence/perception-engines-8a46bc598d57, il est peut-être possible de générer un représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des pairs abstractions/peintures, permettant l'entraînement d'un cGAN type "traduction image-image". 
+Par ailleurs, nous savons que les RCNNs, grâce aux couches de convolutions, sont capables de détecter les caractéristiques visuelles communes d'un ensemble d'images. Comme le prouve ce travail : https://medium.com/artists-and-machine-intelligence/perception-engines-8a46bc598d57, il est peut-être possible de générer une représentation abstraite de nos peintures en utilisant ce principe. Il serait alors théoriquement possible d'obtenir des paires abstractions/peintures, permettant l'entraînement d'un cGAN type "traduction image-image". 
 
-Les résultats pourraient être améliorer en augmentant le nombre d'élements dans le dataset ainsi que le nombre d'epochs.
+Les résultats pourraient être améliorés en augmentant le nombre d'éléments dans le dataset ainsi que le nombre d'epochs.
 
 
 \bibliographystyle{alpha}
