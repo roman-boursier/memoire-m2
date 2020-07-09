@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.12)  7 JUL 2020 01:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.12)  9 JUL 2020 21:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -299,6 +299,33 @@ LaTeX Warning: Label `fig-gaugan' multiply defined.
 
 LaTeX Warning: Label `fig-transfert-de-style' multiply defined.
 
+
+LaTeX Warning: Label `fig-gaugan' multiply defined.
+
+
+LaTeX Warning: Label `fig-transfert-de-style' multiply defined.
+
+
+LaTeX Warning: Label `fig-transfert-de-style' multiply defined.
+
+
+LaTeX Warning: Label `fig-gaugan' multiply defined.
+
+
+LaTeX Warning: Label `fig-transfert-de-style' multiply defined.
+
+
+LaTeX Warning: Label `fig-transfert-de-style' multiply defined.
+
+
+LaTeX Warning: Label `fig-gaugan' multiply defined.
+
+
+LaTeX Warning: Label `fig-transfert-de-style' multiply defined.
+
+
+LaTeX Warning: Label `fig-transfert-de-style' multiply defined.
+
 )
 \openout1 = `memoire.aux'.
 
@@ -367,161 +394,196 @@ Package pdftex.def Info: images/m2ise.png  used on input line 47.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/m2ise.png>] [1
 
-] [2
+] (./memoire.toc
+[2
 
-] (./memoire.toc)
+])
 \tf@toc=\write3
 \openout3 = `memoire.toc'.
 
-[3
-
-]
+ [3]
 <images/pix2pix-t1.png, id=27, 642.4pt x 481.8pt>
 File: images/pix2pix-t1.png Graphic file (type png)
 <use images/pix2pix-t1.png>
-Package pdftex.def Info: images/pix2pix-t1.png  used on input line 94.
+Package pdftex.def Info: images/pix2pix-t1.png  used on input line 88.
 (pdftex.def)             Requested size: 272.99881pt x 204.75125pt.
  [4
 
-]
+ <./images/pix2pix-t1.png>]
 <images/pix2pix-fail.png, id=31, 462.528pt x 346.896pt>
 File: images/pix2pix-fail.png Graphic file (type png)
 <use images/pix2pix-fail.png>
-Package pdftex.def Info: images/pix2pix-fail.png  used on input line 100.
+Package pdftex.def Info: images/pix2pix-fail.png  used on input line 94.
 (pdftex.def)             Requested size: 272.99881pt x 204.75684pt.
- [5 <./images/pix2pix-t1.png> <./images/pix2pix-fail.png>]
-<images/croquis_1.jpg, id=37, 412.54124pt x 573.14125pt>
+<images/croquis_1.jpg, id=32, 412.54124pt x 573.14125pt>
 File: images/croquis_1.jpg Graphic file (type jpg)
 <use images/croquis_1.jpg>
-Package pdftex.def Info: images/croquis_1.jpg  used on input line 112.
+Package pdftex.def Info: images/croquis_1.jpg  used on input line 106.
 (pdftex.def)             Requested size: 412.54024pt x 573.13985pt.
-<images/croquis_2.jpg, id=38, 412.54124pt x 573.14125pt>
+<images/croquis_2.jpg, id=33, 412.54124pt x 573.14125pt>
 File: images/croquis_2.jpg Graphic file (type jpg)
 <use images/croquis_2.jpg>
-Package pdftex.def Info: images/croquis_2.jpg  used on input line 113.
+Package pdftex.def Info: images/croquis_2.jpg  used on input line 107.
 (pdftex.def)             Requested size: 412.54024pt x 573.13985pt.
-<images/croquis_4.jpg, id=39, 412.54124pt x 573.14125pt>
+<images/croquis_4.jpg, id=34, 412.54124pt x 573.14125pt>
 File: images/croquis_4.jpg Graphic file (type jpg)
 <use images/croquis_4.jpg>
-Package pdftex.def Info: images/croquis_4.jpg  used on input line 114.
+Package pdftex.def Info: images/croquis_4.jpg  used on input line 108.
 (pdftex.def)             Requested size: 412.54024pt x 573.13985pt.
 
-Overfull \hbox (16.0887pt too wide) in paragraph at lines 111--117
+Overfull \hbox (16.0887pt too wide) in paragraph at lines 105--111
  [] 
  []
 
-[6 <./images/croquis_1.jpg> <./images/croquis_2.jpg> <./images/croquis_4.jpg>]
+[5 <./images/pix2pix-fail.png> <./images/croquis_1.jpg> <./images/croquis_2.jpg
+> <./images/croquis_4.jpg>]
 Chapitre 1.
-[7
+[6
 
 ]
-<images/test-gaugan-sm.jpg, id=50, 511.9125pt x 510.90875pt>
+<images/test-gaugan-sm.jpg, id=47, 511.9125pt x 510.90875pt>
 File: images/test-gaugan-sm.jpg Graphic file (type jpg)
 <use images/test-gaugan-sm.jpg>
-Package pdftex.def Info: images/test-gaugan-sm.jpg  used on input line 152.
+Package pdftex.def Info: images/test-gaugan-sm.jpg  used on input line 145.
 (pdftex.def)             Requested size: 88.96895pt x 88.79639pt.
-<images/test-gaugan.jpg, id=51, 511.9125pt x 510.90875pt>
+<images/test-gaugan.jpg, id=48, 511.9125pt x 510.90875pt>
 File: images/test-gaugan.jpg Graphic file (type jpg)
 <use images/test-gaugan.jpg>
-Package pdftex.def Info: images/test-gaugan.jpg  used on input line 153.
+Package pdftex.def Info: images/test-gaugan.jpg  used on input line 146.
 (pdftex.def)             Requested size: 88.96895pt x 88.79639pt.
 
-Overfull \hbox (1.38763pt too wide) in paragraph at lines 160--161
+Overfull \hbox (1.38763pt too wide) in paragraph at lines 153--154
 []\T1/cmr/m/n/12 CycleGan [[]], pré-sente une ap-proche pour la tra-duc-tion d'
 une image
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--161
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
 
  []
 
-[8 <./images/test-gaugan-sm.jpg> <./images/test-gaugan.jpg>]
+[7 <./images/test-gaugan-sm.jpg> <./images/test-gaugan.jpg>]
 File: images/test-gaugan.jpg Graphic file (type jpg)
 <use images/test-gaugan.jpg>
-Package pdftex.def Info: images/test-gaugan.jpg  used on input line 174.
+Package pdftex.def Info: images/test-gaugan.jpg  used on input line 167.
 (pdftex.def)             Requested size: 88.96895pt x 88.79639pt.
-<images/transfert-ds.jpg, id=56, 385.44pt x 385.44pt>
+<images/transfert-ds.jpg, id=53, 385.44pt x 385.44pt>
 File: images/transfert-ds.jpg Graphic file (type jpg)
 <use images/transfert-ds.jpg>
-Package pdftex.def Info: images/transfert-ds.jpg  used on input line 175.
+Package pdftex.def Info: images/transfert-ds.jpg  used on input line 168.
 (pdftex.def)             Requested size: 88.79636pt x 88.79639pt.
-<images/gaugan-tds.jpg, id=57, 385.44pt x 385.44pt>
+<images/gaugan-tds.jpg, id=54, 385.44pt x 385.44pt>
 File: images/gaugan-tds.jpg Graphic file (type jpg)
 <use images/gaugan-tds.jpg>
-Package pdftex.def Info: images/gaugan-tds.jpg  used on input line 176.
+Package pdftex.def Info: images/gaugan-tds.jpg  used on input line 169.
 (pdftex.def)             Requested size: 88.79636pt x 88.79639pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
-[9 <./images/transfert-ds.jpg> <./images/gaugan-tds.jpg>]
-Overfull \hbox (13.67949pt too wide) in paragraph at lines 189--189
+[8 <./images/transfert-ds.jpg> <./images/gaugan-tds.jpg>]
+Overfull \hbox (13.67949pt too wide) in paragraph at lines 182--182
 []\T1/cmr/bx/n/14.4 Sketching : In-fer-ring Contour Dra-wings from Images 
  []
 
-<images/sketching-input.jpg, id=61, 192.72pt x 127.9179pt>
+<images/sketching-input.jpg, id=58, 192.72pt x 127.9179pt>
 File: images/sketching-input.jpg Graphic file (type jpg)
 <use images/sketching-input.jpg>
-Package pdftex.def Info: images/sketching-input.jpg  used on input line 197.
+Package pdftex.def Info: images/sketching-input.jpg  used on input line 190.
 (pdftex.def)             Requested size: 133.78267pt x 88.79639pt.
-<images/sketchy2.png, id=62, 803.0pt x 532.99126pt>
+<images/sketchy2.png, id=59, 803.0pt x 532.99126pt>
 File: images/sketchy2.png Graphic file (type png)
 <use images/sketchy2.png>
-Package pdftex.def Info: images/sketchy2.png  used on input line 198.
+Package pdftex.def Info: images/sketchy2.png  used on input line 191.
 (pdftex.def)             Requested size: 133.77582pt x 88.79639pt.
-[10 <./images/sketching-input.jpg> <./images/sketchy2.png>]
+[9 <./images/sketching-input.jpg> <./images/sketchy2.png>]
 Chapitre 2.
-<images/pix2pix.jpg, id=66, 677.53125pt x 381.67593pt>
-File: images/pix2pix.jpg Graphic file (type jpg)
-<use images/pix2pix.jpg>
-Package pdftex.def Info: images/pix2pix.jpg  used on input line 228.
-(pdftex.def)             Requested size: 312.00119pt x 175.76524pt.
-[11
+[10
 
-]
-Overfull \hbox (30.37915pt too wide) in paragraph at lines 255--256
-\T1/cmr/m/n/12 pro-fon-dies, celle la seg-men-ta-tion ainsi que l'al-go-rithme 
-de Ra-mer^^UDouglas^^UPeucker.
- []
+] [11]
+<images/test.png, id=69, 433.62pt x 289.08pt>
+File: images/test.png Graphic file (type png)
+<use images/test.png>
+Package pdftex.def Info: images/test.png  used on input line 258.
+(pdftex.def)             Requested size: 350.99762pt x 234.00795pt.
+<images/abs-input.jpg, id=70, 256.96pt x 256.96pt>
+File: images/abs-input.jpg Graphic file (type jpg)
+<use images/abs-input.jpg>
+Package pdftex.def Info: images/abs-input.jpg  used on input line 270.
+(pdftex.def)             Requested size: 118.39906pt x 118.3982pt.
+<images/abs-output.jpg, id=71, 185.0112pt x 185.0112pt>
+File: images/abs-output.jpg Graphic file (type jpg)
+<use images/abs-output.jpg>
+Package pdftex.def Info: images/abs-output.jpg  used on input line 271.
+(pdftex.def)             Requested size: 118.39828pt x 118.3982pt.
+ [12 <./images/test.png>]
+<images/abs-pc.jpg, id=77, 1212.53pt x 936.49875pt>
+File: images/abs-pc.jpg Graphic file (type jpg)
+<use images/abs-pc.jpg>
+Package pdftex.def Info: images/abs-pc.jpg  used on input line 281.
+(pdftex.def)             Requested size: 350.99762pt x 271.09183pt.
+ [13 <./images/abs-input.jpg> <./images/abs-output.jpg> <./images/abs-pc.jpg>]
+<images/plot-pix2pix.png, id=81, 702.625pt x 451.6875pt>
+File: images/plot-pix2pix.png Graphic file (type png)
+<use images/plot-pix2pix.png>
+Package pdftex.def Info: images/plot-pix2pix.png  used on input line 295.
+(pdftex.def)             Requested size: 350.99762pt x 225.6502pt.
+<images/canny-input.png, id=82, 256.96pt x 256.96pt>
+File: images/canny-input.png Graphic file (type png)
+<use images/canny-input.png>
+Package pdftex.def Info: images/canny-input.png  used on input line 306.
+(pdftex.def)             Requested size: 118.39906pt x 118.3982pt.
+<images/canny-output.png, id=83, 256.96pt x 256.96pt>
+File: images/canny-output.png Graphic file (type png)
+<use images/canny-output.png>
+Package pdftex.def Info: images/canny-output.png  used on input line 307.
+(pdftex.def)             Requested size: 118.39906pt x 118.3982pt.
+ [14 <./images/plot-pix2pix.png> <./images/canny-input.png> <./images/canny-out
+put.png (PNG copy)>]
+<images/canny-photos.jpg, id=89, 1212.53pt x 936.49875pt>
+File: images/canny-photos.jpg Graphic file (type jpg)
+<use images/canny-photos.jpg>
+Package pdftex.def Info: images/canny-photos.jpg  used on input line 317.
+(pdftex.def)             Requested size: 350.99762pt x 271.09183pt.
+ [15 <./images/canny-photos.jpg>]
+<images/plot-cyclegan.png, id=93, 702.625pt x 451.6875pt>
+File: images/plot-cyclegan.png Graphic file (type png)
+<use images/plot-cyclegan.png>
+Package pdftex.def Info: images/plot-cyclegan.png  used on input line 332.
+(pdftex.def)             Requested size: 350.99762pt x 225.6502pt.
+<images/cycle-gan-input.png, id=94, 256.96pt x 256.96pt>
+File: images/cycle-gan-input.png Graphic file (type png)
+<use images/cycle-gan-input.png>
+Package pdftex.def Info: images/cycle-gan-input.png  used on input line 345.
+(pdftex.def)             Requested size: 118.39906pt x 118.3982pt.
+<images/cycle-gan-output.png, id=95, 256.96pt x 256.96pt>
+File: images/cycle-gan-output.png Graphic file (type png)
+<use images/cycle-gan-output.png>
+Package pdftex.def Info: images/cycle-gan-output.png  used on input line 346.
+(pdftex.def)             Requested size: 118.39906pt x 118.3982pt.
+ [16 <./images/plot-cyclegan.png>]
+<images/cyclegan.jpg, id=100, 1212.53pt x 936.49875pt>
+File: images/cyclegan.jpg Graphic file (type jpg)
+<use images/cyclegan.jpg>
+Package pdftex.def Info: images/cyclegan.jpg  used on input line 356.
+(pdftex.def)             Requested size: 350.99762pt x 271.09183pt.
+ [17 <./images/cycle-gan-input.png (PNG copy)> <./images/cycle-gan-output.png (
+PNG copy)> <./images/cyclegan.jpg>]
+<images/time-gpu.png, id=104, 433.62pt x 289.08pt>
+File: images/time-gpu.png Graphic file (type png)
+<use images/time-gpu.png>
+Package pdftex.def Info: images/time-gpu.png  used on input line 370.
+(pdftex.def)             Requested size: 350.99762pt x 234.00795pt.
 
-[12 <./images/pix2pix.jpg>]
-<images/croquis_2_real_A.png, id=74, 256.96pt x 256.96pt>
-File: images/croquis_2_real_A.png Graphic file (type png)
-<use images/croquis_2_real_A.png>
-Package pdftex.def Info: images/croquis_2_real_A.png  used on input line 267.
-(pdftex.def)             Requested size: 77.0886pt x 77.0886pt.
-<images/croquis_2_fake_B.png, id=75, 256.96pt x 256.96pt>
-File: images/croquis_2_fake_B.png Graphic file (type png)
-<use images/croquis_2_fake_B.png>
-Package pdftex.def Info: images/croquis_2_fake_B.png  used on input line 273.
-(pdftex.def)             Requested size: 77.0886pt x 77.0886pt.
-<images/croquis_2_fake_B-gray.png, id=76, 256.96pt x 256.96pt>
-File: images/croquis_2_fake_B-gray.png Graphic file (type png)
-<use images/croquis_2_fake_B-gray.png>
-Package pdftex.def Info: images/croquis_2_fake_B-gray.png  used on input line 2
-78.
-(pdftex.def)             Requested size: 77.0886pt x 77.0886pt.
- [13 <./images/croquis_2_real_A.png (PNG copy)> <./images/croquis_2_fake_B.png 
-(PNG copy)> <./images/croquis_2_fake_B-gray.png (PNG copy)>]
+[18 <./images/time-gpu.png>]
 Chapitre 3.
-[14
-
-]
-Chapitre 4.
-
-Overfull \hbox (4.51947pt too wide) in paragraph at lines 295--296
-\T1/cmr/m/n/12 en-semble d'images. Comme le prouve ce tra-vail : https ://mediu
-m.com/artists-
- []
-
-(./memoire.bbl [15
+(./memoire.bbl [19
 
 ]
 Underfull \hbox (badness 1102) in paragraph at lines 5--9
@@ -551,27 +613,27 @@ Underfull \hbox (badness 1783) in paragraph at lines 51--58
 -line ; ac-ces-sed
  []
 
-[16
+[20
 
 ]
-Underfull \hbox (badness 2277) in paragraph at lines 60--63
+Underfull \hbox (badness 2277) in paragraph at lines 64--67
 []\T1/cmr/m/n/12 ychen93.  The gan zoo.  $\T1/cmtt/m/n/12 https : / / github . 
 com / ychen93 /
  []
 
-) [17] (./memoire.aux)
+) [21] (./memoire.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6994 strings out of 482463
- 100381 string characters out of 5946315
- 339990 words of memory out of 5000000
- 21953 multiletter control sequences out of 15000+600000
+ 7307 strings out of 482463
+ 103506 string characters out of 5946315
+ 340987 words of memory out of 5000000
+ 22257 multiletter control sequences out of 15000+600000
  547070 words of font info for 57 fonts, out of 8000000 for 9000
  417 hyphenation exceptions out of 8191
- 41i,12n,42p,670b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,42p,876b,965s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/roro/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600p
 k> </home/roro/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600p
 k> </home/roro/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600p
@@ -588,10 +650,10 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on memoire.pdf (18 pages, 2137867 bytes).
+Output written on memoire.pdf (22 pages, 5352579 bytes).
 PDF statistics:
- 521 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 555 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
