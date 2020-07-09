@@ -65,9 +65,9 @@
 \markboth{\sc Résumé}{}
 \addcontentsline{toc}{chapter}{Résumé} 
 
-Le présent document présente notre travail effectué dans la cadre de notre mémoire de fin d'étude.
+Le présent document présente notre travail effectué dans le cadre de notre mémoire de fin d'études.
 
-Dans un premier temps, nous présentons le projet et son contexte, puis nous abordons les différentes solutions existantes à travers la section "état de l'art". Nous exposons ensuite nos propositions de solutions et leurs évaluations respectives. En conclusions nous faisons le bilan de ce travail ainsi que les points d'améliorationd possibles de nos modèles.
+Dans un premier temps, nous présentons le projet et son contexte, puis nous abordons les différentes solutions existantes à travers la section "état de l'art". Nous exposons ensuite nos propositions de solutions et leurs évaluations respectives. En conclusion, nous faisons le bilan de ce travail ainsi que les points d'améliorations possibles de nos modèles.
 
 %% Table des matières
 \tableofcontents
@@ -125,7 +125,7 @@ Un générateur fabrique des données et les soumet au discriminateur dont le bu
 
 Le générateur $G(z, \theta_{1})$ représente un réseau de neurones capable de mapper du bruit $z$ vers l'espace désiré $x$. Le discriminateur $D(z, \theta_{2})$ retourne la probabilité dans l'intervalle $[0,1]$ que $x$ vient du dataset original. $\theta_{i}$ représente les poids définis par chacun des modèles. Le générateur tente de maximiser la probabilité que les données $x$, soient classifiées comme appartenant au dataset d'origine et inversement, le discriminateur minimise la probabilité que de fausses images appartiennent au dataset d'origine.
 
-Il existe aujourd'hui une très grande variété de travaux de recherches basés sur les GANs (BCGAN, AmbientGAN, ORGAN, Perceptual GAN). Le dépôt "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de GANs différents !
+Il existe aujourd'hui une très grande variété de travaux de recherche basés sur les GANs (BCGAN, AmbientGAN, ORGAN, Perceptual GAN). Le dépôt "The GANs Zoo" \cite{hindupuravinash} référençait déjà en 2018 plus de 502 noms de GANs différents !
 
 
 \section{CGANs et traduction d'image}
@@ -203,17 +203,17 @@ Ce modèle également du type "traduction image-image", permet d'avoir plusieurs
 \subsection{Implémentations}
 Nous proposons dans les sections suivantes un ensemble de tests effectués selon des configurations différentes. Nous avons retenu les cGANs et en particulier plusieurs implémentations des cycleGan et de pix2pix.
 
-Chaque étapes de l'apprentissage consiste d’abord à sélectionner un lot d’exemples réels, puis à utiliser le générateur pour générer de faux échantillons correspondants. Le discriminateur est ensuite mis à jour avec le lot d’images réelles, puis de fausses images. Ensuite, le générateur est mis à jour en fournissant les images sources réelles comme entrée et les prédictions de sortie du discriminateur.
+Chaque étape de l'apprentissage consiste d’abord à sélectionner un lot d’exemples réels, puis à utiliser le générateur pour générer de faux échantillons correspondants. Le discriminateur est ensuite mis à jour avec le lot d’images réelles, puis de fausses images. Ensuite, le générateur est mis à jour en fournissant les images sources réelles comme entrée et les prédictions de sortie du discriminateur.
 
 Le générateur possède deux scores de pertes ainsi que le score de somme pondérée retourné de l’appel. Ce score pondéré est utilisé pour mettre à jour les poids du modèle.
 
 
 \subsection{Datasets}
-Malgrè nos recherches, nous n'avons pas trouvé de datasets correspondants exactement à nos besoins, c'est-à-dire des paires d'abstractions/peintures chinoises.Pour les croquis, les plus grosses bases existantes sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. Leurs utilisations est délicate car il s'agit le plus souvent d'objets isolés et non appairés à une image réaliste. Pour la peinture chinoise, nous avons récupéré un premier dataset de 5000 images (\cite{ychen93}) et scrappés des plateformes comme google/baidu et pinterest. Chaque dataset est répartie à 90\% pour l'entraînement et 10\% pour les tests. Nous avons ensuite réduit le nombres d'exemples pour des raisons de temps et d'apprentissage trop longs. Chaque image a été par la suite redimensionnée et recadrée au format 256x256.
+Malgré nos recherches, nous n'avons pas trouvé de datasets correspondant exactement à nos besoins, c'est-à-dire des paires d'abstractions/peintures chinoises.Pour les croquis, les plus grosses bases existantes sont TU-Berlin \cite{eitz2012hdhso}, Sketchy \cite{sketchy2016} et Quickdraw. Leurs utilisations sont délicates car il s'agit le plus souvent d'objets isolés et non appairés à une image réaliste. Pour la peinture chinoise, nous avons récupéré un premier dataset de 5000 images (\cite{ychen93}) et scrappés des plateformes comme google/baidu et pinterest. Chaque dataset est répartie à 90\% pour l'entraînement et 10\% pour les tests. Nous avons ensuite réduit le nombre d'exemples pour des raisons de temps et d'apprentissage trop longs. Chaque image a été par la suite redimensionnée et recadrée au format 256x256.
 
 
 \subsection{Evaluations}
-En général, les modèles GAN ne convergent pas; au lieu de cela, un équilibre est trouvé entre le générateur et les modèles discriminateurs.
+En général, un modèle de type GAN ne converge pas. Au lieu de cela, un équilibre est trouvé entre le générateur et les modèles discriminateurs.
 
 \vspace*{\baselineskip}
 
@@ -228,14 +228,14 @@ En général, les modèles GAN ne convergent pas; au lieu de cela, un équilibre
 \vspace*{\baselineskip}
 
 \begin{itemize}
-\item d1 : La perte de discrimination sur des exemples réels
-\item d2 : La perte de discrimination sur des exemples générés ou faux
-\item g : La perte du générateur (moyenne pondérée des pertes liées à l’affrontement de d1 et d2).
+\item d1 : la perte de discrimination sur des exemples réels
+\item d2 : la perte de discrimination sur des exemples générés ou faux
+\item g : la perte du générateur (moyenne pondérée des pertes liées à l’affrontement de d1 et d2).
 \end{itemize}
 
 \vspace*{\baselineskip}
 
-Par conséquent, nous ne pouvons pas juger facilement quand la formation devrait cesser. Nous avons donc enregistrer le modèle et généré des exemples de traductions image-à-image périodiquement pendant la formation. Les rendus peuvent être évalués à la fin de l’analyse et utilisés pour sélectionner un modèle de générateur final basé sur la qualité d’image générée. 
+Par conséquent, nous ne pouvons pas juger facilement quand la formation devrait cesser. Nous avons donc enregistré le modèle et généré des exemples de traductions image-à-image périodiquement pendant la formation. Les rendus peuvent être évalués à la fin de l’analyse et utilisés pour sélectionner un modèle de générateur final basé sur la qualité d’image générée. 
 
 
 
@@ -245,7 +245,7 @@ Par conséquent, nous ne pouvons pas juger facilement quand la formation devrait
 
 \section{Abstraction vers peinture}
 
-L'idée ici est de décomposer le passage de l'abstraction à la peinture en deux étapes, c'est à dire de l'abstraction au dessin détaillé puis du dessin détaillé vers la peinture chinoise.
+L'idée ici est de décomposer le passage de l'abstraction à la peinture en deux étapes, c'est-à-dire de l'abstraction au dessin détaillé puis du dessin détaillé vers la peinture chinoise.
 
 L'entraînement utilise l'architecture pix2pix décrites dans \cite{DBLP:journals/corr/GatysEB15a}, implémentée sous keras 2.4.0.
 
@@ -287,7 +287,7 @@ Le premier dataset de 654 images a été labellisé manuellement, et le second a
 
 \section{Abstraction vers photo}
 
-Au départ, nous avions directement fait nos tests sur des pairs croquis/photos. Les résultats étant décevants, nous avons alors avons tenté un nouvel apprentissage en générant les abstractions via un filtre Canny. L'apprentissage à été effectué grâce à un dataset composé de 583 pairs canny/photos et une implémentation de pix2pix sous pytorch 0.4.1.
+Au départ, nous avions directement fait nos tests sur des pairs croquis/photos. Les résultats étant décevants, nous avons alors tenté un nouvel apprentissage en générant les abstractions via un filtre Canny. L'apprentissage a été effectué grâce à un dataset composé de 583 pairs canny/photos et une implémentation de pix2pix sous pytorch 0.4.1.
 
 \subsection{Evaluation}
 \begin{center}
@@ -322,9 +322,9 @@ Au départ, nous avions directement fait nos tests sur des pairs croquis/photos.
 
 \section{Photo vers peinture}
 
-Pour ce dernier test, nous avons utilisé une implémentation des cycle GANs, ce qui nous a permis d'utiliser un dataset non appairé de 590 peintures chinoises et 583 photos. Cette solution est très utilisée pour la génération de peintures à partir d'une image déjà réaliste. L'idée pour nous est d'appliquer le style propre aux peintures chinoises sur des photos n'appartenant pas à ce domaine. 
+Pour ce dernier test, nous avons utilisé une implémentation des cycleGANs, ce qui nous a permis d'utiliser un dataset non appairé de 590 peintures chinoises et 583 photos. Cette solution est très utilisée pour la génération de peintures à partir d'une image déjà réaliste. L'idée pour nous est d'appliquer le style propre aux peintures chinoises sur des photos n'appartenant pas à ce domaine. 
 
-Pour plus de rapidité nous avons réduit le nombre de d'éléments du dataset ce qui a un impact significatif sur les résultats. Malheureusement, l'entraînement fut interrompu à la 45ème epochs en raison de restrictions sur google colab.
+Pour plus de rapidité nous avons réduit le nombre d'éléments du dataset ce qui a un impact significatif sur les résultats. Malheureusement, l'entraînement fut interrompu à la 45ème epochs en raison de restrictions sur google colab.
 
 \subsection{Evaluation}
 \begin{center}
@@ -335,7 +335,7 @@ Pour plus de rapidité nous avons réduit le nombre de d'éléments du dataset c
 
 
 \subsection{Résultats}
-Malgré un rendu plutôt réussi, on constate une application des couleurs parfois hasardeuse et incohérentes. Cela est probablement dû au nombre limité d'epochs.
+Malgré un rendu plutôt réussi, on constate une application des couleurs parfois hasardeuse et incohérente. Cela est probablement dû au nombre limité d'epochs.
 
 \vspace*{\baselineskip}
 
@@ -363,26 +363,26 @@ Malgré un rendu plutôt réussi, on constate une application des couleurs parfo
 
 \section{Temps d'exécutions}
 
-Afin d'évaluer la possibilité d'une application temps réel,nous avons testé le modèle de la section "Abstraction vers photo" sous google collab en mode GPU (Tesla K80) sur des images 256*256px. Seulement les prédictions sont pris en compte et non le chargement des images et du modèle.
+Afin d'évaluer la possibilité d'une application temps réel, nous avons testé le modèle de la section "abstraction vers photo" sous google collab en mode GPU (Tesla K80) sur des images 256*256px. Seules les prédictions sont pris en compte et non le chargement des images et du modèle.
 
 \begin{center}
   \centering
     \includegraphics[width=0.9\linewidth]{images/time-gpu.png}
-  \captionof{figure}{Temps d’exécutions - GPU - Tesla K80 \ref{fig-gaugan}\label{fig-transfert-de-style}(b)}
+  \captionof{figure}{Temps d’exécution - GPU - Tesla K80 \ref{fig-gaugan}\label{fig-transfert-de-style}(b)}
 \end{center}
 
-Le modèle est donc capable de générer 30 image en 0.7 sc ce qui semble un bon score.  A terme, il serait intéressant de regrouper nos deux modèles (abstraction hed -> hed peinture), pour gagner davantage en performance.
+Le modèle est donc capable de générer 30 images en 0.7 sc ce qui semble un bon score. À terme, il serait intéressant de regrouper nos deux modèles (abstraction hed -> hed peinture), pour gagner davantage en performances.
 
 
 \chapter{Conclusion et Perspectives\label{chap-conclusion}}
 
-L'ensemble de ces expériences nous montrent que dans le cadre d'un transfert "image-image", il semble impossible de générer directement une peinture crédible depuis une abstraction. Cet état de faite est principalement lié à l’absence de datasets conséquents. En revanche nous avons obtenu de meilleurs résultats en séparant les étapes d'apprentissages, malgré des datasets réduits. 
+L'ensemble de ces expériences nous montre que dans le cadre d'un transfert "image-image", il semble impossible de générer directement une peinture crédible depuis une abstraction. Ce constat s'explique par l’absence de datasets conséquents. En revanche nous avons obtenu de meilleurs résultats en séparant les étapes d'apprentissages, malgré des datasets réduits. 
 
-Dans tous les cas, le rendu final donnera des résultats acceptables que si l'entrée appartient au même thème que la sortie, dans notre cas un paysage. Nous n'avons à jour pas trouvé d'exemples permettant de prouver le contraire. Nous avons aussi remarqué que plus y a de variations et de disparités dans le dataset, moins la prédiction est convaincante.
+Dans tous les cas, le rendu final donnera des résultats acceptables que si l'entrée appartient au même thème que la sortie, dans notre cas un paysage. Nous n'avons à jour pas trouvé d'exemples permettant de prouver le contraire. Nous avons aussi remarqué que plus il y a de variations et de disparités dans le dataset, moins la prédiction est convaincante.
 
 Théoriquement, nos résultats pourraient être améliorés en augmentant le nombre d'éléments dans le dataset ainsi que le nombre d'epochs, ce qui nécessite des ressources de calculs plus importantes.
 
-Le passage d'un paysage abstrait à la peinture semble donc possible à condition de trouver une méthode de génération d'abstraction automatique pour ainsi augmenter la taille du dataset. Générer ces abstractions veut dire ne garder que les informations minimum et utiles à la compréhensions de l'image. C'est pourquoi la méthode de l'instance segmentation et/ou de l’utilisation d'un algorithme d'approximation d'image auraient mérité d'être approfondis.
+Le passage d'un paysage abstrait à la peinture semble donc possible à condition de trouver une méthode de génération d'abstractions automatique pour ainsi augmenter la taille du dataset. Générer ces abstractions veut dire ne garder que le minimum d'informations utiles à la compréhension de l'image. C'est pourquoi la méthode de l'instance segmentation et/ou de l’utilisation d'un algorithme d'approximation d'image aurait mérité d'être approfondis.
 
 \bibliographystyle{alpha}
 \bibliography{memoire}
